@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -79,24 +79,9 @@ module.exports =
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_Button__ = __webpack_require__("@material-ui/core/Button");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_Button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_Button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core_Dialog__ = __webpack_require__("@material-ui/core/Dialog");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core_Dialog___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_ui_core_Dialog__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_DialogTitle__ = __webpack_require__("@material-ui/core/DialogTitle");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_DialogTitle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_DialogTitle__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_core_DialogContent__ = __webpack_require__("@material-ui/core/DialogContent");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_core_DialogContent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__material_ui_core_DialogContent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_DialogContentText__ = __webpack_require__("@material-ui/core/DialogContentText");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_DialogContentText___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_DialogContentText__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_DialogActions__ = __webpack_require__("@material-ui/core/DialogActions");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_DialogActions___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_DialogActions__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__material_ui_core_Typography__ = __webpack_require__("@material-ui/core/Typography");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__material_ui_core_Typography___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__material_ui_core_Typography__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__material_ui_core_styles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_next_link__ = __webpack_require__("next/link");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_actions_productsActions__ = __webpack_require__("./redux/actions/productsActions.js");
 var _jsxFileName = "/Users/mattialorenzutti/Projects/dada-web/pages/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -109,171 +94,173 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
 
 
-
-
-
-
-
-
-
-var styles = function styles(theme) {
-  return {
-    root: {
-      textAlign: 'center',
-      paddingTop: theme.spacing.unit * 20
-    }
-  };
-};
 
 var Index =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(Index, _React$Component);
+function (_Component) {
+  _inherits(Index, _Component);
 
   function Index() {
-    var _ref;
-
-    var _temp, _this;
-
     _classCallCheck(this, Index);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _possibleConstructorReturn(_this, (_temp = _this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), Object.defineProperty(_assertThisInitialized(_this), "state", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: {
-        open: false
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "handleClose", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        _this.setState({
-          open: false
-        });
-      }
-    }), Object.defineProperty(_assertThisInitialized(_this), "handleClick", {
-      configurable: true,
-      enumerable: true,
-      writable: true,
-      value: function value() {
-        _this.setState({
-          open: true
-        });
-      }
-    }), _temp));
+    return _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).apply(this, arguments));
   }
 
   _createClass(Index, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchProducts();
+    }
+  }, {
     key: "render",
     value: function render() {
-      var classes = this.props.classes;
-      var open = this.state.open;
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-        className: classes.root,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 15
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__material_ui_core_Dialog___default.a, {
-        open: open,
-        onClose: this.handleClose,
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h2", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 16
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_DialogTitle___default.a, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45
-        }
-      }, "Super Secret Password"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__material_ui_core_DialogContent___default.a, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 46
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_DialogContentText___default.a, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 47
-        }
-      }, "1-2-3-4-5")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_DialogActions___default.a, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 49
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_Button___default.a, {
-        color: "primary",
-        onClick: this.handleClose,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 50
-        }
-      }, "OK"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__material_ui_core_Typography___default.a, {
-        variant: "display1",
-        gutterBottom: true,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 55
-        }
-      }, "Material-UI"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__material_ui_core_Typography___default.a, {
-        variant: "subheading",
-        gutterBottom: true,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 58
-        }
-      }, "example project"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__material_ui_core_Typography___default.a, {
-        gutterBottom: true,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_next_link___default.a, {
-        href: "/about",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 62
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 63
-        }
-      }, "Go to the about page"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_Button___default.a, {
-        variant: "contained",
-        color: "secondary",
-        onClick: this.handleClick,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 66
-        }
-      }, "Super Secret Password"));
+      }, "ciao"), this.props.productsStore.products.map(function (item) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          }
+        }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
+          src: item.post.image,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 21
+          }
+        }), item.post.name);
+      }));
     }
   }]);
 
   return Index;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_8__material_ui_core_styles__["withStyles"])(styles)(Index));
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) {
+  return {
+    productsStore: state.productsReducer
+  };
+}, {
+  fetchProducts: __WEBPACK_IMPORTED_MODULE_2__redux_actions_productsActions__["b" /* fetchProducts */]
+})(Index));
 
 /***/ }),
 
-/***/ 4:
+/***/ "./redux/actions/productsActions.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FETCH_PRODUCTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fetchProducts; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_db__ = __webpack_require__("./utils/db.js");
+
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
+
+
+var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+var fetchProducts = function fetchProducts() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(dispatch) {
+        var db;
+        return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_1__utils_db__["a" /* loadDB */])();
+
+              case 2:
+                db = _context.sent;
+                db.firestore().collection('products').orderBy('added_on', 'desc').onSnapshot(function (snapshot) {
+                  var newState = [];
+                  snapshot.forEach(function (doc) {
+                    console.log(doc.data());
+                    newState.push({
+                      id: doc.id,
+                      post: doc.data()
+                    });
+                  });
+                  dispatch({
+                    type: FETCH_PRODUCTS,
+                    payload: newState
+                  });
+                });
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
+};
+
+/***/ }),
+
+/***/ "./utils/db.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = loadDB;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__firebase_app__ = __webpack_require__("@firebase/app");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__firebase_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__firebase_firestore__ = __webpack_require__("@firebase/firestore");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__firebase_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__firebase_firestore__);
+
+
+function loadDB() {
+  try {
+    var config = {
+      apiKey: "AIzaSyDKM3Tjm7aGKUx86JrNXTVt7zcZ4-0R1Bk",
+      authDomain: "dada-ism.firebaseapp.com",
+      databaseURL: "https://dada-ism.firebaseio.com",
+      projectId: "dada-ism",
+      storageBucket: "dada-ism.appspot.com",
+      messagingSenderId: "632379132030"
+    };
+    __WEBPACK_IMPORTED_MODULE_0__firebase_app___default.a.initializeApp(config);
+  } catch (err) {
+    // we skip the "already exists" message which is
+    // not an actual error when we're hot-reloading
+    if (!/already exists/.test(err.message)) {
+      console.error('Firebase initialization error', err.stack);
+    }
+  }
+
+  return __WEBPACK_IMPORTED_MODULE_0__firebase_app___default.a;
+}
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
@@ -281,66 +268,24 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ }),
 
-/***/ "@material-ui/core/Button":
+/***/ "@babel/runtime/regenerator":
 /***/ (function(module, exports) {
 
-module.exports = require("@material-ui/core/Button");
+module.exports = require("@babel/runtime/regenerator");
 
 /***/ }),
 
-/***/ "@material-ui/core/Dialog":
+/***/ "@firebase/app":
 /***/ (function(module, exports) {
 
-module.exports = require("@material-ui/core/Dialog");
+module.exports = require("@firebase/app");
 
 /***/ }),
 
-/***/ "@material-ui/core/DialogActions":
+/***/ "@firebase/firestore":
 /***/ (function(module, exports) {
 
-module.exports = require("@material-ui/core/DialogActions");
-
-/***/ }),
-
-/***/ "@material-ui/core/DialogContent":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/DialogContent");
-
-/***/ }),
-
-/***/ "@material-ui/core/DialogContentText":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/DialogContentText");
-
-/***/ }),
-
-/***/ "@material-ui/core/DialogTitle":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/DialogTitle");
-
-/***/ }),
-
-/***/ "@material-ui/core/Typography":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/Typography");
-
-/***/ }),
-
-/***/ "@material-ui/core/styles":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
-
-/***/ "next/link":
-/***/ (function(module, exports) {
-
-module.exports = require("next/link");
+module.exports = require("@firebase/firestore");
 
 /***/ }),
 
@@ -348,6 +293,13 @@ module.exports = require("next/link");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-redux":
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
 
 /***/ })
 
