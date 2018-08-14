@@ -81,7 +81,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__("react-redux");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_actions_productsActions__ = __webpack_require__("./redux/actions/productsActions.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_recompose_compose__ = __webpack_require__("recompose/compose");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_recompose_compose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_recompose_compose__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_Button__ = __webpack_require__("@material-ui/core/Button");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_Button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_Button__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_core_Grid__ = __webpack_require__("@material-ui/core/Grid");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_ui_core_Grid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__material_ui_core_Grid__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_actions_productsActions__ = __webpack_require__("./redux/actions/productsActions.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_styles__);
 var _jsxFileName = "/Users/mattialorenzutti/Projects/dada-web/pages/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -101,6 +109,19 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
+
+
+
+
+var styles = function styles(theme) {
+  return {
+    root: {
+      textAlign: 'center',
+      paddingTop: theme.spacing.unit * 20
+    }
+  };
+};
 
 var Index =
 /*#__PURE__*/
@@ -124,40 +145,67 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 26
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h2", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 27
         }
-      }, "ciao"), this.props.productsStore.products.map(function (item) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, "ciao"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_Button___default.a, {
+        variant: "contained",
+        color: "secondary",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }, "Super Secret Password"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__material_ui_core_Grid___default.a, {
+        container: true,
+        spacing: 16,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
+        }
+      }, this.props.productsStore.products.map(function (item) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__material_ui_core_Grid___default.a, {
+          item: true,
+          xs: 6,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 20
+            lineNumber: 35
+          }
+        }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          key: item.id,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 36
           }
         }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
           src: item.post.image,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 21
+            lineNumber: 37
           }
-        }), item.post.name);
-      }));
+        }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h4", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 38
+          }
+        }, item.post.name)));
+      })));
     }
   }]);
 
   return Index;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_2_recompose_compose___default()(Object(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_styles__["withStyles"])(styles), Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(function (state) {
   return {
     productsStore: state.productsReducer
   };
 }, {
-  fetchProducts: __WEBPACK_IMPORTED_MODULE_2__redux_actions_productsActions__["b" /* fetchProducts */]
-})(Index));
+  fetchProducts: __WEBPACK_IMPORTED_MODULE_5__redux_actions_productsActions__["b" /* fetchProducts */]
+}))(Index));
 
 /***/ }),
 
@@ -196,7 +244,6 @@ var fetchProducts = function fetchProducts() {
                 db.firestore().collection('products').orderBy('added_on', 'desc').onSnapshot(function (snapshot) {
                   var newState = [];
                   snapshot.forEach(function (doc) {
-                    console.log(doc.data());
                     newState.push({
                       id: doc.id,
                       post: doc.data()
@@ -289,6 +336,27 @@ module.exports = require("@firebase/firestore");
 
 /***/ }),
 
+/***/ "@material-ui/core/Button":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Button");
+
+/***/ }),
+
+/***/ "@material-ui/core/Grid":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Grid");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
 /***/ "react":
 /***/ (function(module, exports) {
 
@@ -300,6 +368,13 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "recompose/compose":
+/***/ (function(module, exports) {
+
+module.exports = require("recompose/compose");
 
 /***/ })
 

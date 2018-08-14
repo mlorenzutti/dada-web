@@ -77,23 +77,25 @@ module.exports =
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux__ = __webpack_require__("./redux/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__("react-redux");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_redux__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_app__ = __webpack_require__("next/app");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_app__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_redux_wrapper__ = __webpack_require__("next-redux-wrapper");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_redux_wrapper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_next_redux_wrapper__);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__redux__ = __webpack_require__("./redux/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__("react-redux");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_app__ = __webpack_require__("next/app");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_app__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_redux_wrapper__ = __webpack_require__("next-redux-wrapper");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_redux_wrapper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_redux_wrapper__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_CssBaseline__ = __webpack_require__("@material-ui/core/CssBaseline");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_CssBaseline___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_CssBaseline__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_jss_lib_JssProvider__ = __webpack_require__("react-jss/lib/JssProvider");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react_jss_lib_JssProvider___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react_jss_lib_JssProvider__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__utils_getPageContext__ = __webpack_require__("./utils/getPageContext.js");
 var _jsxFileName = "/Users/mattialorenzutti/Projects/dada-web/pages/_app.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -105,11 +107,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 // pages/_app.js
+
+
+
+
 
 
 
@@ -129,95 +135,84 @@ var MyApp =
 function (_App) {
   _inherits(MyApp, _App);
 
-  function MyApp() {
+  function MyApp(props) {
+    var _this;
+
     _classCallCheck(this, MyApp);
 
-    return _possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, (MyApp.__proto__ || Object.getPrototypeOf(MyApp)).call(this, props));
+    Object.defineProperty(_assertThisInitialized(_this), "pageContext", {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: null
+    });
+    _this.pageContext = Object(__WEBPACK_IMPORTED_MODULE_8__utils_getPageContext__["a" /* default */])();
+    return _this;
   }
 
   _createClass(MyApp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // Remove the server-side injected CSS.
+      var jssStyles = document.querySelector('#jss-server-side');
+
+      if (jssStyles && jssStyles.parentNode) {
+        jssStyles.parentNode.removeChild(jssStyles);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _props = this.props,
           Component = _props.Component,
           pageProps = _props.pageProps,
           store = _props.store;
-      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_next_app__["Container"], {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_next_app__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 42
         }
-      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_redux__["Provider"], {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_redux__["Provider"], {
         store: store,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 43
         }
-      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(Component, _extends({}, pageProps, {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_react_jss_lib_JssProvider___default.a, {
+        registry: this.pageContext.sheetsRegistry,
+        generateClassName: this.pageContext.generateClassName,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 44
         }
-      }))));
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__["MuiThemeProvider"], {
+        theme: this.pageContext.theme,
+        sheetsManager: this.pageContext.sheetsManager,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 50
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_CssBaseline___default.a, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 55
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Component, _extends({
+        pageContext: this.pageContext
+      }, pageProps, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 58
+        }
+      }))))));
     }
-  }], [{
-    key: "getInitialProps",
-    value: function () {
-      var _getInitialProps = _asyncToGenerator(
-      /*#__PURE__*/
-      __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(_ref) {
-        var Component, ctx, pageProps;
-        return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                Component = _ref.Component, ctx = _ref.ctx;
-                // we can dispatch from here too
-                ctx.store.dispatch({
-                  type: 'FOO',
-                  payload: 'foo'
-                });
-
-                if (!Component.getInitialProps) {
-                  _context.next = 8;
-                  break;
-                }
-
-                _context.next = 5;
-                return Component.getInitialProps(ctx);
-
-              case 5:
-                _context.t0 = _context.sent;
-                _context.next = 9;
-                break;
-
-              case 8:
-                _context.t0 = {};
-
-              case 9:
-                pageProps = _context.t0;
-                return _context.abrupt("return", {
-                  pageProps: pageProps
-                });
-
-              case 11:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, this);
-      }));
-
-      return function getInitialProps(_x) {
-        return _getInitialProps.apply(this, arguments);
-      };
-    }()
   }]);
 
   return MyApp;
-}(__WEBPACK_IMPORTED_MODULE_4_next_app___default.a);
+}(__WEBPACK_IMPORTED_MODULE_3_next_app___default.a);
 
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_5_next_redux_wrapper___default()(__WEBPACK_IMPORTED_MODULE_2__redux__["a" /* initStore */])(MyApp));
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_4_next_redux_wrapper___default()(__WEBPACK_IMPORTED_MODULE_1__redux__["a" /* initStore */])(MyApp));
 
 /***/ }),
 
@@ -256,7 +251,6 @@ var fetchProducts = function fetchProducts() {
                 db.firestore().collection('products').orderBy('added_on', 'desc').onSnapshot(function (snapshot) {
                   var newState = [];
                   snapshot.forEach(function (doc) {
-                    console.log(doc.data());
                     newState.push({
                       id: doc.id,
                       post: doc.data()
@@ -400,6 +394,70 @@ function loadDB() {
 
 /***/ }),
 
+/***/ "./utils/getPageContext.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getPageContext;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jss__ = __webpack_require__("jss");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core_colors_purple__ = __webpack_require__("@material-ui/core/colors/purple");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__material_ui_core_colors_purple___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__material_ui_core_colors_purple__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_colors_green__ = __webpack_require__("@material-ui/core/colors/green");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_colors_green___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_colors_green__);
+/* eslint-disable no-underscore-dangle */
+
+
+
+ // A theme with custom primary and secondary color.
+// It's optional.
+
+var theme = Object(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__["createMuiTheme"])({
+  palette: {
+    primary: {
+      light: __WEBPACK_IMPORTED_MODULE_2__material_ui_core_colors_purple___default.a[300],
+      main: __WEBPACK_IMPORTED_MODULE_2__material_ui_core_colors_purple___default.a[500],
+      dark: __WEBPACK_IMPORTED_MODULE_2__material_ui_core_colors_purple___default.a[700]
+    },
+    secondary: {
+      light: __WEBPACK_IMPORTED_MODULE_3__material_ui_core_colors_green___default.a[300],
+      main: __WEBPACK_IMPORTED_MODULE_3__material_ui_core_colors_green___default.a[500],
+      dark: __WEBPACK_IMPORTED_MODULE_3__material_ui_core_colors_green___default.a[700]
+    }
+  }
+});
+
+function createPageContext() {
+  return {
+    theme: theme,
+    // This is needed in order to deduplicate the injection of CSS in the page.
+    sheetsManager: new Map(),
+    // This is needed in order to inject the critical CSS.
+    sheetsRegistry: new __WEBPACK_IMPORTED_MODULE_0_jss__["SheetsRegistry"](),
+    // The standard class name generator.
+    generateClassName: Object(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__["createGenerateClassName"])()
+  };
+}
+
+function getPageContext() {
+  // Make sure to create a new context for every server-side request so that data
+  // isn't shared between connections (which would be bad).
+  if (!process.browser) {
+    return createPageContext();
+  } // Reuse context on the client-side.
+
+
+  if (!global.__INIT_MATERIAL_UI__) {
+    global.__INIT_MATERIAL_UI__ = createPageContext();
+  }
+
+  return global.__INIT_MATERIAL_UI__;
+}
+
+/***/ }),
+
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -429,6 +487,41 @@ module.exports = require("@firebase/firestore");
 
 /***/ }),
 
+/***/ "@material-ui/core/CssBaseline":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CssBaseline");
+
+/***/ }),
+
+/***/ "@material-ui/core/colors/green":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/colors/green");
+
+/***/ }),
+
+/***/ "@material-ui/core/colors/purple":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/colors/purple");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "jss":
+/***/ (function(module, exports) {
+
+module.exports = require("jss");
+
+/***/ }),
+
 /***/ "next-redux-wrapper":
 /***/ (function(module, exports) {
 
@@ -447,6 +540,13 @@ module.exports = require("next/app");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "react-jss/lib/JssProvider":
+/***/ (function(module, exports) {
+
+module.exports = require("react-jss/lib/JssProvider");
 
 /***/ }),
 

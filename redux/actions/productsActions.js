@@ -13,7 +13,6 @@ export const fetchProducts = () => async dispatch => {
           let newState = []
   
           snapshot.forEach(function(doc) {
-            console.log(doc.data())
             newState.push({
               id: doc.id,
               post: doc.data()
