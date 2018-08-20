@@ -29,11 +29,13 @@ class Index extends Component {
   componentDidMount(){
     this.props.fetchProducts()
     this.props.fetchUser()
-    console.log(this.props.userStore)
+    if (this.props.userStore.user != null){
+      this.props.fetchWishlist(this.props.userStore.user.uid)
+    }
   }
 
   componentDidUpdate(prevProps){
-    if (prevProps.userStore == null && this.props.userStore != null){
+    if (prevProps.userStore.user == null && this.props.userStore.user != null){
       this.props.fetchWishlist(this.props.userStore.user.uid)
     }
   }
@@ -48,16 +50,54 @@ class Index extends Component {
           <div className="container">
             <div className="row">
               <div className="col py-5 text-center">
-                <h2>Handcrafted products from <strong>Amazon</strong> selected for you</h2>
+                <h1 className="h2">Handcrafted products from <strong>Amazon</strong> selected for you</h1>
               </div>
             </div>
             <div className="row">
               {this.props.productsStore.products.map((item,key) => {
-                return (
-                  <div className="col-sm-4" key={key}>
-                    <Product data={item} />
-                  </div>
-                )
+                if (key%13===0){
+                  return (
+                    <div className="col-sm-12 mt-4 mb-5">
+                      <div className="bg-white">
+                        <div className="row">
+                          <div className="col-sm-6" >
+                            <div style={{height:300,backgroundImage:"url(https://cdn.mos.cms.futurecdn.net/yGg9PE8Dv2WgpDTtYCAMa-970-80.jpg)",backgroundSize:"cover",backgroundPosition:"center"}}></div>
+                          </div>
+                          <div className="col-sm-6 pt-4 px-4 d-flex flex-column justify-content-between">
+                            <div>
+                              <h3><strong>Best Mirrorless Cameras 2018</strong></h3>
+                              <p>Our expert guide will help you choose the best mirrorless camera for you</p>
+                              <a href="#" className="btn btn-primary btn-sm">Read more</a>
+                            </div>
+                            <div className="d-flex">
+                              <div className="card-mini bg-white p-3 mr-3 text-center">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg"></img><br/>
+                                <small><strong>Sony</strong></small><br/>
+                                <small class="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
+                              </div>
+                              <div className="card-mini bg-white p-3 mr-3 text-center">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg"></img><br/>
+                                <small><strong>Sony</strong></small><br/>
+                                <small class="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
+                              </div>
+                              <div className="card-mini bg-white p-3 mr-3 text-center">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg"></img><br/>
+                                <small><strong>Sony</strong></small><br/>
+                                <small class="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                }else{
+                  return (
+                    <div className="col-sm-4" key={key}>
+                      <Product product={item} />
+                    </div>
+                  )
+                }
               })}
             </div>
           </div>
@@ -67,5 +107,5 @@ class Index extends Component {
   }
 }
 
-export default connect((state) => ({ productsStore: state.productsReducer, userStore: state.userReducer }),{fetchProducts,fetchUser})(Index)
+export default connect((state) => ({ productsStore: state.productsReducer, userStore: state.userReducer }),{fetchProducts,fetchUser,fetchWishlist})(Index)
 

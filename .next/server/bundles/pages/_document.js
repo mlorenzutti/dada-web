@@ -78,6 +78,8 @@ module.exports =
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
 var _jsxFileName = "/Users/mattialorenzutti/Projects/dada-web/components/header.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -93,6 +95,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -114,70 +117,84 @@ function (_Component) {
         className: "row py-3 sticky-top navbar-expand-lg navbar-light bg-white",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 6
+          lineNumber: 7
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 7
+          lineNumber: 8
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "row align-items-center justify-content-between",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 9
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "col-5",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 10
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "navbar-nav",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
-        }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
-        className: "nav-item nav-link active",
-        href: "#",
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 11
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", {
-        className: "material-icons header-icons",
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+        href: '/',
+        as: '/',
+        prefetch: true,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 12
         }
-      }, "home"), " Home"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
         className: "nav-item nav-link active",
-        href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 13
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", {
         className: "material-icons header-icons",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 14
+        }
+      }, "home"), " Home")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+        className: "nav-item nav-link active",
+        href: "#",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", {
+        className: "material-icons header-icons",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
         }
       }, "star"), " Featured"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "col-2 text-center",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 22
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+        href: '/',
+        as: '/',
+        prefetch: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
         className: "navbar-brand mr-0",
-        href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 24
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
         src: "/static/images/logo.svg",
@@ -187,34 +204,41 @@ function (_Component) {
         alt: "",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 25
         }
-      }))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      })))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "col-5 justify-content-end",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 29
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
         className: "navbar-nav justify-content-end",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 30
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+        href: '/wishlist',
+        as: '/wishlist',
+        prefetch: true,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
         className: "nav-item nav-link active",
-        href: "#",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 32
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("i", {
         className: "material-icons header-icons",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 33
         }
-      }, "favorite"), " Wishlist"))))));
+      }, "favorite"), " Wishlist")))))));
     }
   }]);
 
@@ -359,6 +383,13 @@ module.exports = __webpack_require__("./pages/_document.js");
 /***/ (function(module, exports) {
 
 module.exports = require("next/document");
+
+/***/ }),
+
+/***/ "next/link":
+/***/ (function(module, exports) {
+
+module.exports = require("next/link");
 
 /***/ }),
 

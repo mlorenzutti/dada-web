@@ -298,7 +298,9 @@ var fetchUser = function fetchUser() {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FETCH_WISHLIST; });
 /* unused harmony export ADD_PRODUCT */
 /* unused harmony export REMOVE_PRODUCT */
-/* unused harmony export fetchWishlist */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return fetchWishlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return removeFromWishlist; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addToWishlist; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_db__ = __webpack_require__("./utils/db.js");
@@ -327,7 +329,8 @@ var fetchWishlist = function fetchWishlist(uid) {
 
               case 2:
                 fb = _context.sent;
-                fb.firestore().collection('users').document(uid).collection('wishlist').orderBy('saved_on', 'desc').onSnapshot(function (snapshot) {
+                console.log(uid);
+                fb.firestore().collection('users').doc(uid).collection('wishlist').orderBy("saved_on", "desc").onSnapshot(function (snapshot) {
                   var newState = [];
                   snapshot.forEach(function (doc) {
                     newState.push({
@@ -341,7 +344,7 @@ var fetchWishlist = function fetchWishlist(uid) {
                   });
                 });
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -351,6 +354,95 @@ var fetchWishlist = function fetchWishlist(uid) {
 
       return function (_x) {
         return _ref.apply(this, arguments);
+      };
+    }()
+  );
+};
+var removeFromWishlist = function removeFromWishlist(uid, product) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref2 = _asyncToGenerator(
+      /*#__PURE__*/
+      __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee2(dispatch) {
+        var fb;
+        return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_1__utils_db__["a" /* loadFirebase */])();
+
+              case 2:
+                fb = _context2.sent;
+                fb.firestore().collection('users').doc(uid).collection('wishlist').doc(product.id).delete().then(function () {
+                  console.log("Document successfully deleted!");
+                  dispatch({
+                    type: REMOVE_PRODUCT
+                  });
+                }).catch(function (error) {
+                  console.error("Error deleting document: ", error);
+                });
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }()
+  );
+};
+var addToWishlist = function addToWishlist(uid, product) {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref3 = _asyncToGenerator(
+      /*#__PURE__*/
+      __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee3(dispatch) {
+        var fb, productPost;
+        return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return Object(__WEBPACK_IMPORTED_MODULE_1__utils_db__["a" /* loadFirebase */])();
+
+              case 2:
+                fb = _context3.sent;
+                productPost = {
+                  'image': product.post.image,
+                  'brand': product.post.brand,
+                  'amazon_link': product.post.amazon_link,
+                  'name': product.post.name,
+                  'price': product.post.price,
+                  // replace with Firestore server timestamp when implemented in Flutter
+                  'saved_on': Date.now()
+                };
+                fb.firestore().collection('users').doc(uid).collection('wishlist').doc(product.id).set(productPost).then(function () {
+                  console.log("Document successfully written!");
+                  dispatch({
+                    type: ADD_PRODUCT
+                  });
+                }).catch(function (error) {
+                  console.error("Error writing document: ", error);
+                });
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
       };
     }()
   );
