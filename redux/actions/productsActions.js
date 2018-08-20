@@ -1,12 +1,12 @@
-import {loadDB} from '../../utils/db'
+import {loadFirebase} from '../../utils/db'
 
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS'
 
 
 export const fetchProducts = () => async dispatch => {
-    const db = await loadDB();
+    const fb = await loadFirebase();
   
-    db.firestore().collection('products')
+    fb.firestore().collection('products')
         .orderBy('added_on', 'desc')
         .onSnapshot(snapshot => {
   

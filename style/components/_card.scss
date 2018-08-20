@@ -1,0 +1,61 @@
+.card--product {
+    @extend .p-4;
+    @extend .mb-4;
+    border: 0;
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.05);
+    border-radius:0;
+    font-size: .8rem;
+    transition: .3s ease all;
+    &:hover {
+        box-shadow: 0px 0px 30px rgba(0,0,0,0.2);
+        .card__button {
+            opacity: 1;
+            transform: translateY(0px) translateX(-50%);
+        }
+    }
+    a {
+        text-decoration: none;
+        color: $body-color;
+    }
+    .card__button {
+        position: absolute;
+        opacity: 0;
+        left: 50%;
+        transform: translateY(20px) translateX(-50%);
+        bottom: 85px;
+        transition: .3s ease all;
+    }
+    .card__price {
+        @extend .bg-primary;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 5px 10px;
+        font-size: 17px;
+        color: white;
+        font-weight: bold;
+    }
+    .card__image {
+        @extend .mb-4;
+        width: 80%;
+        padding-top: 70%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+    }
+    .card__brand {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+        overflow: hidden;
+        display: block;
+    }
+    .card__name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+        overflow: hidden;
+        display: block;
+    }
+}

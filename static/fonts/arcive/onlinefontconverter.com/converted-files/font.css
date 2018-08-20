@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'ClanPro-Book';
+  src: url('ClanPro-Book.woff') format('woff'),
+       url('ClanPro-Book.ttf') format('truetype'),
+       url('ClanPro-Book.svg#ClanPro-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'clanpro-book';
+  src: url('clanpro-book.eot');
+  src: url('clanpro-book.woff2') format('woff2'),
+       url('clanpro-book.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+

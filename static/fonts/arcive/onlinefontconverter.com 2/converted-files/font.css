@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'ClanPro-News';
+  src: url('ClanPro-News.woff') format('woff'),
+       url('ClanPro-News.ttf') format('truetype'),
+       url('ClanPro-News.svg#ClanPro-News') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'clanpro-news';
+  src: url('clanpro-news.eot');
+  src: url('clanpro-news.woff2') format('woff2'),
+       url('clanpro-news.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
