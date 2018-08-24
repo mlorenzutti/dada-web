@@ -4,7 +4,7 @@ import Link from 'next/link'
 class Header extends Component {
     render(){
         return (
-            <nav className="row py-3 sticky-top navbar-expand-lg navbar-light bg-white">
+            <nav className="py-3 sticky-top navbar-expand-lg navbar-light bg-white">
                 <div className="container">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-5">

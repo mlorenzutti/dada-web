@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
-import { fetchProducts } from '../redux/actions/productsActions'
+import { fetchProducts, fetchProductsSync, FETCH_PRODUCTS_SYNC } from '../redux/actions/productsActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
+import { loadFirebase } from '../utils/db'
 
 import "../style/style.scss"
 
@@ -25,9 +26,25 @@ const styles = theme => ({
 });
 
 class Index extends Component {
+  static async getInitialProps({store, req, query}) {
+      const fb = await loadFirebase();
+      const fetchProductsAction = fetchProductsSync(fb);
+      store.dispatch(fetchProductsAction);
+      await fetchProductsAction.payload.then((payload) => {
+          let newState = []
+  
+          payload.forEach(function(doc) {
+            newState.push({
+              id: doc.id,
+              post: doc.data()
+            });
+          });
+          store.dispatch({type: FETCH_PRODUCTS_SYNC, payload: newState })
+      })
+      return {};
+  }
 
   componentDidMount(){
-    this.props.fetchProducts()
     this.props.fetchUser()
     if (this.props.userStore.user != null){
       this.props.fetchWishlist(this.props.userStore.user.uid)
@@ -73,17 +90,17 @@ class Index extends Component {
                               <div className="card-mini bg-white p-3 mr-3 text-center">
                                 <img src="https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg"></img><br/>
                                 <small><strong>Sony</strong></small><br/>
-                                <small class="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
+                                <small className="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
                               </div>
                               <div className="card-mini bg-white p-3 mr-3 text-center">
                                 <img src="https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg"></img><br/>
                                 <small><strong>Sony</strong></small><br/>
-                                <small class="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
+                                <small className="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
                               </div>
                               <div className="card-mini bg-white p-3 mr-3 text-center">
                                 <img src="https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg"></img><br/>
                                 <small><strong>Sony</strong></small><br/>
-                                <small class="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
+                                <small className="d-inline-block text-truncate w-100">a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera</small>
                               </div>
                             </div>
                           </div>
@@ -107,5 +124,5 @@ class Index extends Component {
   }
 }
 
-export default connect((state) => ({ productsStore: state.productsReducer, userStore: state.userReducer }),{fetchProducts,fetchUser,fetchWishlist})(Index)
+export default connect((state) => ({ productsStore: state.productsReducer, userStore: state.userReducer }),{fetchProducts,fetchProductsSync,fetchUser,fetchWishlist})(Index)
 

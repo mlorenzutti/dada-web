@@ -23132,18 +23132,24 @@ module.exports = function(originalModule) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_redux__ = __webpack_require__("./node_modules/react-redux/es/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__redux_actions_productsActions__ = __webpack_require__("./redux/actions/productsActions.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_actions_userActions__ = __webpack_require__("./redux/actions/userActions.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_actions_wishlistActions__ = __webpack_require__("./redux/actions/wishlistActions.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__style_style_scss__ = __webpack_require__("./style/style.scss");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__style_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__style_style_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_product__ = __webpack_require__("./components/product.js");
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__("./node_modules/react-redux/es/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__redux_actions_productsActions__ = __webpack_require__("./redux/actions/productsActions.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__redux_actions_userActions__ = __webpack_require__("./redux/actions/userActions.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__redux_actions_wishlistActions__ = __webpack_require__("./redux/actions/wishlistActions.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_db__ = __webpack_require__("./utils/db.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_style_scss__ = __webpack_require__("./style/style.scss");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__style_style_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_product__ = __webpack_require__("./components/product.js");
+
 var _jsxFileName = "/Users/mattialorenzutti/Projects/dada-web/pages/index.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -23156,6 +23162,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -23197,7 +23204,6 @@ function (_Component) {
   _createClass(Index, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProducts();
       this.props.fetchUser();
 
       if (this.props.userStore.user != null) {
@@ -23215,79 +23221,79 @@ function (_Component) {
     key: "render",
     value: function render() {
       var classes = this.props.classes;
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 65
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         className: "bg-light py-5",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 66
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         className: "container",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50
+          lineNumber: 67
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 68
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         className: "col py-5 text-center",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 69
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h1", {
+      }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h1", {
         className: "h2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 70
         }
-      }, "Handcrafted products from ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("strong", {
+      }, "Handcrafted products from ", __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("strong", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 70
         }
-      }, "Amazon"), " selected for you"))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+      }, "Amazon"), " selected for you"))), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         className: "row",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 73
         }
       }, this.props.productsStore.products.map(function (item, key) {
         if (key % 13 === 0) {
-          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
             className: "col-sm-12 mt-4 mb-5",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 60
+              lineNumber: 77
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
             className: "bg-white",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 61
+              lineNumber: 78
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
             className: "row",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 62
+              lineNumber: 79
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
             className: "col-sm-6",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 63
+              lineNumber: 80
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
             style: {
               height: 300,
               backgroundImage: "url(https://cdn.mos.cms.futurecdn.net/yGg9PE8Dv2WgpDTtYCAMa-970-80.jpg)",
@@ -23296,194 +23302,244 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 64
-            }
-          })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            className: "col-sm-6 pt-4 px-4 d-flex flex-column justify-content-between",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 66
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 67
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h3", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("strong", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 68
-            }
-          }, "Best Mirrorless Cameras 2018")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 69
-            }
-          }, "Our expert guide will help you choose the best mirrorless camera for you"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
-            href: "#",
-            className: "btn btn-primary btn-sm",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 70
-            }
-          }, "Read more")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            className: "d-flex",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 72
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            className: "card-mini bg-white p-3 mr-3 text-center",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 73
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
-            src: "https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 74
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 74
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("small", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 75
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("strong", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 75
-            }
-          }, "Sony")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 75
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("small", {
-            "class": "d-inline-block text-truncate w-100",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 76
-            }
-          }, "a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            className: "card-mini bg-white p-3 mr-3 text-center",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 78
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
-            src: "https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg",
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 79
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 79
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("small", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 80
-            }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("strong", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 80
-            }
-          }, "Sony")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 80
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("small", {
-            "class": "d-inline-block text-truncate w-100",
-            __source: {
-              fileName: _jsxFileName,
               lineNumber: 81
             }
-          }, "a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            className: "card-mini bg-white p-3 mr-3 text-center",
+          })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+            className: "col-sm-6 pt-4 px-4 d-flex flex-column justify-content-between",
             __source: {
               fileName: _jsxFileName,
               lineNumber: 83
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
-            src: "https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg",
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
             __source: {
               fileName: _jsxFileName,
               lineNumber: 84
             }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 84
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("small", {
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h3", {
             __source: {
               fileName: _jsxFileName,
               lineNumber: 85
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("strong", {
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("strong", {
             __source: {
               fileName: _jsxFileName,
               lineNumber: 85
             }
-          }, "Sony")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 85
-            }
-          }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("small", {
-            "class": "d-inline-block text-truncate w-100",
+          }, "Best Mirrorless Cameras 2018")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
             __source: {
               fileName: _jsxFileName,
               lineNumber: 86
             }
-          }, "a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera")))))));
-        } else {
-          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-            className: "col-sm-4",
-            key: key,
+          }, "Our expert guide will help you choose the best mirrorless camera for you"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("a", {
+            href: "#",
+            className: "btn btn-primary btn-sm",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 87
+            }
+          }, "Read more")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+            className: "d-flex",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 89
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+            className: "card-mini bg-white p-3 mr-3 text-center",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 90
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("img", {
+            src: "https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 91
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 91
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("small", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 92
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("strong", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 92
+            }
+          }, "Sony")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 92
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("small", {
+            className: "d-inline-block text-truncate w-100",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 93
+            }
+          }, "a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+            className: "card-mini bg-white p-3 mr-3 text-center",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 95
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("img", {
+            src: "https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg",
             __source: {
               fileName: _jsxFileName,
               lineNumber: 96
             }
-          }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_product__["a" /* default */], {
-            product: item,
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 96
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("small", {
             __source: {
               fileName: _jsxFileName,
               lineNumber: 97
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("strong", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 97
+            }
+          }, "Sony")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 97
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("small", {
+            className: "d-inline-block text-truncate w-100",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 98
+            }
+          }, "a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+            className: "card-mini bg-white p-3 mr-3 text-center",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 100
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("img", {
+            src: "https://images-na.ssl-images-amazon.com/images/I/81SmMdtAzAL._AC_UL140_SR140,140_.jpg",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 101
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 101
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("small", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 102
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("strong", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 102
+            }
+          }, "Sony")), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("br", {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 102
+            }
+          }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("small", {
+            className: "d-inline-block text-truncate w-100",
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 103
+            }
+          }, "a7R III 42.4MP Full-Frame Mirrorless Interchangeable-Lens Camera")))))));
+        } else {
+          return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
+            className: "col-sm-4",
+            key: key,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 113
+            }
+          }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__components_product__["a" /* default */], {
+            product: item,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 114
             }
           }));
         }
       })))));
     }
+  }], [{
+    key: "getInitialProps",
+    value: function () {
+      var _getInitialProps = _asyncToGenerator(
+      /*#__PURE__*/
+      __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.mark(function _callee(_ref) {
+        var store, req, query, fb, fetchProductsAction;
+        return __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                store = _ref.store, req = _ref.req, query = _ref.query;
+                _context.next = 3;
+                return Object(__WEBPACK_IMPORTED_MODULE_6__utils_db__["a" /* loadFirebase */])();
+
+              case 3:
+                fb = _context.sent;
+                fetchProductsAction = Object(__WEBPACK_IMPORTED_MODULE_3__redux_actions_productsActions__["d" /* fetchProductsSync */])(fb);
+                store.dispatch(fetchProductsAction);
+                _context.next = 8;
+                return fetchProductsAction.payload.then(function (payload) {
+                  var newState = [];
+                  payload.forEach(function (doc) {
+                    newState.push({
+                      id: doc.id,
+                      post: doc.data()
+                    });
+                  });
+                  store.dispatch({
+                    type: __WEBPACK_IMPORTED_MODULE_3__redux_actions_productsActions__["b" /* FETCH_PRODUCTS_SYNC */],
+                    payload: newState
+                  });
+                });
+
+              case 8:
+                return _context.abrupt("return", {});
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function getInitialProps(_x) {
+        return _getInitialProps.apply(this, arguments);
+      };
+    }()
   }]);
 
   return Index;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+}(__WEBPACK_IMPORTED_MODULE_1_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["b" /* connect */])(function (state) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(function (state) {
   return {
     productsStore: state.productsReducer,
     userStore: state.userReducer
   };
 }, {
-  fetchProducts: __WEBPACK_IMPORTED_MODULE_2__redux_actions_productsActions__["b" /* fetchProducts */],
-  fetchUser: __WEBPACK_IMPORTED_MODULE_3__redux_actions_userActions__["b" /* fetchUser */],
-  fetchWishlist: __WEBPACK_IMPORTED_MODULE_4__redux_actions_wishlistActions__["c" /* fetchWishlist */]
+  fetchProducts: __WEBPACK_IMPORTED_MODULE_3__redux_actions_productsActions__["c" /* fetchProducts */],
+  fetchProductsSync: __WEBPACK_IMPORTED_MODULE_3__redux_actions_productsActions__["d" /* fetchProductsSync */],
+  fetchUser: __WEBPACK_IMPORTED_MODULE_4__redux_actions_userActions__["b" /* fetchUser */],
+  fetchWishlist: __WEBPACK_IMPORTED_MODULE_5__redux_actions_wishlistActions__["c" /* fetchWishlist */]
 })(Index));
     (function (Component, route) {
       if(!Component) return
@@ -23512,7 +23568,9 @@ function (_Component) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FETCH_PRODUCTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fetchProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return FETCH_PRODUCTS_SYNC; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return fetchProductsSync; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return fetchProducts; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_db__ = __webpack_require__("./utils/db.js");
@@ -23522,6 +23580,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+var FETCH_PRODUCTS_SYNC = 'FETCH_PRODUCTS_SYNC';
+var fetchProductsSync = function fetchProductsSync(firebase) {
+  return {
+    type: 'FETCH_PRODUCTS_SYNC',
+    payload: firebase.firestore().collection('products').orderBy('added_on', 'desc').get()
+  };
+};
 var fetchProducts = function fetchProducts() {
   return (
     /*#__PURE__*/

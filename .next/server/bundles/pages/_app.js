@@ -161,7 +161,9 @@ function (_App) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FETCH_PRODUCTS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return fetchProducts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return FETCH_PRODUCTS_SYNC; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return fetchProductsSync; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return fetchProducts; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__ = __webpack_require__("@babel/runtime/regenerator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_db__ = __webpack_require__("./utils/db.js");
@@ -171,6 +173,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+var FETCH_PRODUCTS_SYNC = 'FETCH_PRODUCTS_SYNC';
+var fetchProductsSync = function fetchProductsSync(firebase) {
+  return {
+    type: 'FETCH_PRODUCTS_SYNC',
+    payload: firebase.firestore().collection('products').orderBy('added_on', 'desc').get()
+  };
+};
 var fetchProducts = function fetchProducts() {
   return (
     /*#__PURE__*/
@@ -524,6 +533,11 @@ var INITIAL_STATE = {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case __WEBPACK_IMPORTED_MODULE_0__actions_productsActions__["b" /* FETCH_PRODUCTS_SYNC */]:
+      return _objectSpread({}, state, {
+        products: action.payload
+      });
+
     case __WEBPACK_IMPORTED_MODULE_0__actions_productsActions__["a" /* FETCH_PRODUCTS */]:
       return _objectSpread({}, state, {
         products: action.payload

@@ -114,7 +114,7 @@ function (_Component) {
     key: "render",
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("nav", {
-        className: "row py-3 sticky-top navbar-expand-lg navbar-light bg-white",
+        className: "py-3 sticky-top navbar-expand-lg navbar-light bg-white",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 7
