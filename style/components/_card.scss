@@ -62,7 +62,13 @@
 
 .card-mini {
     width: 120px;
-    img {
-        width: 70%;
+    .card-mini__image {
+        width: 80%;
+        padding-top: 70%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
     }
+    
 }
