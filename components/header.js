@@ -5,7 +5,7 @@ class Header extends Component {
     render(){
         return (
             <nav className="py-3 sticky-top navbar-expand-lg navbar-light bg-white">
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row align-items-center justify-content-between">
                         <div className="col-5">
                             <div className="navbar-nav">

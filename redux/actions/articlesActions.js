@@ -2,7 +2,7 @@ export const FETCH_ARTICLES = 'FETCH_ARTICLES'
 export const FETCH_ARTICLES_SYNC = 'FETCH_ARTICLES_SYNC'
 export const FETCH_ARTICLE_SYNC = 'FETCH_ARTICLE_SYNC'
 export const FETCH_ARTICLES_PRODUCTS = 'FETCH_ARTICLES_PRODUCTS'
-export const FETCH_ARTICLE_PRODUCTS_SYNC = 'FETCH_ARTICLE_PRODUCTS_SYNC'
+export const FETCH_ARTICLE_PRODUCTS = 'FETCH_ARTICLE_PRODUCTS'
 
 import {loadFirebase} from '../../utils/db'
 
@@ -21,11 +21,38 @@ export const fetchArticleSync = (firebase,articleId) => {
     }
 }
 
-export const fetchArticleProducts = (firebase,articleId) => {
-    return {
-        type: 'FETCH_ARTICLE_PRODUCTS_SYNC',
-        payload: firebase.firestore().collection('articles').doc(articleId).collection('products').orderBy('added_on', 'desc').get()
-    }
+export const fetchArticleProducts = (articleId) => async dispatch => {
+
+    const firebase = await loadFirebase();
+    
+    firebase.firestore().collection('articles')
+        .doc(articleId)
+        .collection('products')
+        .get()
+        .then((snapshot) => {
+            let promises = []
+            snapshot.forEach(function(doc) {
+                promises.push(firebase.firestore().collection('products').doc(doc.id).get())                
+            });
+            
+            Promise.all(promises).then(values => {
+
+                const newState = []
+                
+                values.forEach(function(doc){                    
+                    newState.push({
+                        id: doc.id,
+                        post: doc.data()
+                    })
+                })    
+
+                dispatch({
+                    type: FETCH_ARTICLE_PRODUCTS,
+                    payload: newState
+                })
+            })
+            
+        })
 }
 
 
@@ -40,23 +67,33 @@ export const fetchAllArticleProducts = (articles) => async dispatch => {
         firebase.firestore().collection('articles')
         .doc(article.id)
         .collection('products')
-        .orderBy('added_on', 'desc')
         .get()
         .then((snapshot) => {
-            let newState = []
+            let promises = []
             snapshot.forEach(function(doc) {
-                newState.push({
-                    id: doc.id,
-                    post: doc.data()
-                });
+                promises.push(firebase.firestore().collection('products').doc(doc.id).get())                
             });
-            dispatch({
-                type: FETCH_ARTICLES_PRODUCTS,
-                payload: {
-                    articleId: article.id,
-                    products: newState
-                }
-              })
+            
+            Promise.all(promises).then(values => {
+
+                const newState = []
+                
+                values.forEach(function(doc){                    
+                    newState.push({
+                        id: doc.id,
+                        post: doc.data()
+                    })
+                })    
+
+                dispatch({
+                    type: FETCH_ARTICLES_PRODUCTS,
+                    payload: {
+                        articleId: article.id,
+                        products: newState
+                    }
+                })
+            })
+            
         })
 
     }) 

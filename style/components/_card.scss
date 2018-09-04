@@ -70,5 +70,10 @@
         background-repeat: no-repeat;
         margin: 0 auto;
     }
+    .card-mini__brand {
+        font-size: .7rem;
+        font-weight: bold;      
+        @extend .mt-3;
+    }
     
 }

@@ -106,7 +106,7 @@ class Index extends Component {
     return (
       <div>
         <div className="bg-light py-5">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col py-5 text-center">
                 <h1 className="h2">Handcrafted products from <strong>Amazon</strong> selected for you</h1>

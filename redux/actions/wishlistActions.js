@@ -6,28 +6,37 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
 
 export const fetchWishlist = (uid) => async dispatch => {
-    const fb = await loadFirebase();
+    const firebase = await loadFirebase();
     console.log(uid)
-    fb.firestore().collection('users')
+    firebase.firestore().collection('users')
         .doc(uid)
         .collection('wishlist')
         .orderBy("saved_on","desc")
         .onSnapshot(snapshot => {
 
-          let newState = []
-  
+          let promises = []
           snapshot.forEach(function(doc) {
-            
-            newState.push({
-              id: doc.id,
-              post: doc.data()
-            });
+              promises.push(firebase.firestore().collection('products').doc(doc.id).get())                
           });
-  
-          dispatch({
-            type: FETCH_WISHLIST,
-            payload: newState
+            
+          Promise.all(promises).then(values => {
+
+              const newState = []
+              
+              values.forEach(function(doc){                    
+                  newState.push({
+                      id: doc.id,
+                      post: doc.data()
+                  })
+              })    
+
+              dispatch({
+                  type: FETCH_WISHLIST,
+                  payload: newState
+              })
           })
+
+         
         });
   };
 
@@ -53,11 +62,11 @@ export const removeFromWishlist = (uid,product) => async dispatch => {
 export const addToWishlist = (uid,product) => async dispatch => {
     const fb = await loadFirebase();
     const productPost = {
-      'image': product.post.image,
+      /*'image': product.post.image,
       'brand': product.post.brand,
       'amazon_link': product.post.amazon_link,
       'name': product.post.name,
-      'price': product.post.price,
+      'price': product.post.price,*/
       // replace with Firestore server timestamp when implemented in Flutter
       'saved_on': Date.now(),
     }

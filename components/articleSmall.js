@@ -11,14 +11,15 @@ class ArticleSmall extends Component {
             subtitle,
             slug,
             title,
-            products
+            products,
+            image
         } = this.props.article.post
         console.log(products)
         return (
             <div className="bg-white">
                 <div className="row">
                     <div className="col-sm-6" >
-                    <div style={{height:300,backgroundImage:"url(https://cdn.mos.cms.futurecdn.net/yGg9PE8Dv2WgpDTtYCAMa-970-80.jpg)",backgroundSize:"cover",backgroundPosition:"center"}}></div>
+                    <div style={{height:300,backgroundImage:"url("+image+")",backgroundSize:"cover",backgroundPosition:"center"}}></div>
                     </div>
                     <div className="col-sm-6 pt-4 px-4 d-flex flex-column justify-content-between">
                     <div>
@@ -36,8 +37,8 @@ class ArticleSmall extends Component {
                                         style={{backgroundImage:`url(${product.post.image})`}}
                                     >
                                     </div>
-                                    <div className="card-mini__brand">
-                                        <small><strong>{product.post.brand}</strong></small>
+                                    <div className="card-mini__brand d-inline-block text-truncate w-100">
+                                       {product.post.brand}
                                     </div>
                                     <small className="card-mini__name d-inline-block text-truncate w-100">{product.post.name}</small>
                                 </div>

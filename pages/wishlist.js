@@ -46,7 +46,7 @@ class Wishlist extends Component {
     return (
       <div>
         <div className="bg-light py-5">
-          <div className="container">
+          <div className="container-fluid">
             <div className="row">
               <div className="col py-5 text-center">
                 <h1 className="h2">Your Wishlist</h1>

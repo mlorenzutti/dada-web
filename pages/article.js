@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
-import { fetchArticleSync, fetchArticleProducts, FETCH_ARTICLE_SYNC, FETCH_ARTICLE_PRODUCTS_SYNC } from '../redux/actions/articlesActions'
+import { fetchArticleSync, fetchArticleProducts, FETCH_ARTICLE_SYNC } from '../redux/actions/articlesActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
@@ -18,26 +18,15 @@ class Article extends Component {
         store.dispatch(fetchArticleAction);
         await fetchArticleAction.payload.then((payload) => {
             store.dispatch({type: FETCH_ARTICLE_SYNC, payload: payload.data() })
-        })        
-
-        const fetchArticleProductsAction = fetchArticleProducts(fb,query.id);
-        store.dispatch(fetchArticleProductsAction)
-        await fetchArticleProductsAction.payload.then((payload) => {
-            let newState = []
-            payload.forEach(function(doc) {
-                newState.push({
-                id: doc.id,
-                post: doc.data()
-                });
-            });
-            store.dispatch({type: FETCH_ARTICLE_PRODUCTS_SYNC, payload: newState })
-        })
+        }) 
         
-        return {};
+        return {articleId: query.id};
     }
 
     componentDidMount(){
+
         this.props.fetchUser()
+        this.props.fetchArticleProducts(this.props.articleId)
         if (this.props.userStore.user != null){
           this.props.fetchWishlist(this.props.userStore.user.uid)
         }
@@ -53,27 +42,39 @@ class Article extends Component {
         const {
             title,
             subtitle,
+            image,
             text,
             products
         } = this.props.articleStore.currentArticle
         return (
-            <div className="container mt-5" >
+            <div className="container-fluid mt-5" >
                 <div className="row">
                     <div className="col-sm-12">
+                        <div className="mb-5">
                         <h1>{title}</h1>
                         <h3>{subtitle}</h3>
-                        <div className="mt-4" dangerouslySetInnerHTML={{__html:text}}></div>
+                        </div>
+                        <div className="row">
+                            <div className="col-lg-6">
+                                <img src={image} className="w-100 mb-3"></img>
+                                <div className="mt-4" dangerouslySetInnerHTML={{__html:text}}></div>
+                            </div>
+                            <div className="col-lg-6 pl-lg-5">
+                                <div className="row">
+                                {products && products.map((item,key) => {
+                                    return (
+                                        <div className="col-sm-6" key={key}>
+                                            <Product product={item} />
+                                        </div>
+                                    )
+                                })}
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
-                <div className="row mt-5">
-                    {products.map((item,key) => {
-                        return (
-                            <div className="col-sm-4" key={key}>
-                                <Product product={item} />
-                            </div>
-                        )
-                    })}
-                </div>
+                
             </div>
         )
     }
