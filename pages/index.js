@@ -5,6 +5,7 @@ import { fetchArticlesSync, fetchAllArticleProducts, FETCH_ARTICLES_SYNC } from 
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
+import { checkCountryCookie } from '../utils/country'
 
 import "../style/style.scss"
 
@@ -12,10 +13,13 @@ import Product from '../components/product'
 import ArticleSmall from '../components/articleSmall'
 
 class Index extends Component {
-  static async getInitialProps({store, req, query}) {
+  static async getInitialProps(ctx) {
+      const {store, req, query} = ctx
+      await checkCountryCookie(ctx,store.getState().countryReducer,store)
+      const countryCode = store.getState().countryReducer.currentCountry.code
       const fb = await loadFirebase();
       //get Products
-      const fetchProductsAction = fetchProductsSync(fb);
+      const fetchProductsAction = fetchProductsSync(fb,countryCode);
       store.dispatch(fetchProductsAction);
       await fetchProductsAction.payload.then((payload) => {
           let newState = []
@@ -42,20 +46,20 @@ class Index extends Component {
           store.dispatch({type: FETCH_ARTICLES_SYNC, payload: listArticles }) 
       })
       
-      return {};
+      return {countryCode};
   }
 
   componentDidMount(){
     this.props.fetchUser()
-    this.props.fetchAllArticleProducts(this.props.articleStore.articles)
+    this.props.fetchAllArticleProducts(this.props.articleStore.articles,this.props.countryCode)
     if (this.props.userStore.user != null){
-      this.props.fetchWishlist(this.props.userStore.user.uid)
+      this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
 
   componentDidUpdate(prevProps){
     if (prevProps.userStore.user == null && this.props.userStore.user != null){
-      this.props.fetchWishlist(this.props.userStore.user.uid)
+      this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
 
@@ -105,18 +109,24 @@ class Index extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <div className="bg-light py-5">
+        
+          <div className="bg-primary  mb-3">
           <div className="container-fluid">
             <div className="row">
-              <div className="col py-5 text-center">
-                <h1 className="h2">Handcrafted products from <strong>Amazon</strong> selected for you</h1>
+              <div className="col ">
+                <div className="py-md-4 py-4 text-center  text-light ">
+                  <h1 className="h4 p-0 m-0">Handcrafted products from <strong>Amazon</strong> selected for you</h1>
+                </div>
               </div>
             </div>
+          </div>
+          </div>
+          <div className="container-fluid">
             <div className="row">
               {this._buildGrid()}
             </div>
           </div>
-        </div>
+        
       </div>
     )
   }

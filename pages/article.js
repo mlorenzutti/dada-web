@@ -4,6 +4,7 @@ import { fetchArticleSync, fetchArticleProducts, FETCH_ARTICLE_SYNC } from '../r
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
+import { checkCountryCookie } from '../utils/country'
 
 import Product from '../components/product'
 
@@ -11,7 +12,10 @@ import "../style/style.scss"
 
 class Article extends Component {
 
-    static async getInitialProps({store, req, query}) {
+    static async getInitialProps(ctx) {
+        const {store, req, query} = ctx
+        await checkCountryCookie(ctx,store.getState().countryReducer,store)
+        const countryCode = store.getState().countryReducer.currentCountry.code
         const fb = await loadFirebase();
         //get Products
         const fetchArticleAction = fetchArticleSync(fb,query.id);
@@ -20,21 +24,21 @@ class Article extends Component {
             store.dispatch({type: FETCH_ARTICLE_SYNC, payload: payload.data() })
         }) 
         
-        return {articleId: query.id};
+        return {articleId: query.id, countryCode};
     }
 
     componentDidMount(){
 
         this.props.fetchUser()
-        this.props.fetchArticleProducts(this.props.articleId)
+        this.props.fetchArticleProducts(this.props.articleId, this.props.countryCode)
         if (this.props.userStore.user != null){
-          this.props.fetchWishlist(this.props.userStore.user.uid)
+          this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
         }
       }
     
       componentDidUpdate(prevProps){
         if (prevProps.userStore.user == null && this.props.userStore.user != null){
-          this.props.fetchWishlist(this.props.userStore.user.uid)
+          this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
         }
       }
 

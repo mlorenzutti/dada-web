@@ -21,7 +21,9 @@ export const fetchArticleSync = (firebase,articleId) => {
     }
 }
 
-export const fetchArticleProducts = (articleId) => async dispatch => {
+export const fetchArticleProducts = (articleId,countryCode) => async dispatch => {
+
+    
 
     const firebase = await loadFirebase();
     
@@ -32,18 +34,20 @@ export const fetchArticleProducts = (articleId) => async dispatch => {
         .then((snapshot) => {
             let promises = []
             snapshot.forEach(function(doc) {
-                promises.push(firebase.firestore().collection('products').doc(doc.id).get())                
+                promises.push(firebase.firestore().collection('sites').doc(countryCode).collection('products').doc(doc.id).get())                
             });
             
             Promise.all(promises).then(values => {
 
                 const newState = []
                 
-                values.forEach(function(doc){                    
-                    newState.push({
-                        id: doc.id,
-                        post: doc.data()
-                    })
+                values.forEach(function(doc){    
+                    if (doc.data()){                
+                        newState.push({
+                            id: doc.id,
+                            post: doc.data()
+                        })
+                    }
                 })    
 
                 dispatch({
@@ -56,13 +60,12 @@ export const fetchArticleProducts = (articleId) => async dispatch => {
 }
 
 
-export const fetchAllArticleProducts = (articles) => async dispatch => {
+export const fetchAllArticleProducts = (articles,countryCode) => async dispatch => {
 
     const firebase = await loadFirebase();
 
     articles.map((article,key) => {
 
-        console.log(article.id)
 
         firebase.firestore().collection('articles')
         .doc(article.id)
@@ -71,7 +74,7 @@ export const fetchAllArticleProducts = (articles) => async dispatch => {
         .then((snapshot) => {
             let promises = []
             snapshot.forEach(function(doc) {
-                promises.push(firebase.firestore().collection('products').doc(doc.id).get())                
+                promises.push(firebase.firestore().collection('sites').doc(countryCode).collection('products').doc(doc.id).get())                
             });
             
             Promise.all(promises).then(values => {

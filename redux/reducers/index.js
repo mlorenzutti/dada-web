@@ -4,12 +4,14 @@ import productsReducer from './productsReducer'
 import userReducer from './userReducer'
 import wishlistReducer from './wishlistReducer'
 import articlesReducer from './articlesReducer'
+import countryReducer from './countryReducer'
 
 const reducers = {
     productsReducer,
     userReducer,
-    wishlistReducer,
+    wishlistReducer,  
     articlesReducer,
+    countryReducer,
     form
 }
 

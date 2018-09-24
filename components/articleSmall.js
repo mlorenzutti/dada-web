@@ -14,22 +14,21 @@ class ArticleSmall extends Component {
             products,
             image
         } = this.props.article.post
-        console.log(products)
         return (
-            <div className="bg-white">
+            <div className="article">
                 <div className="row">
-                    <div className="col-sm-6" >
-                    <div style={{height:300,backgroundImage:"url("+image+")",backgroundSize:"cover",backgroundPosition:"center"}}></div>
+                    <div className="col-lg-6 col-md-4" >
+                    <div className="article-image" style={{backgroundImage:"url("+image+")"}}></div>
                     </div>
-                    <div className="col-sm-6 pt-4 px-4 d-flex flex-column justify-content-between">
-                    <div>
+                    <div className="col-lg-6 col-md-8 pt-4 d-flex flex-column justify-content-between">
+                    <div className="mb-4 px-4 px-md-0 pr-md-4">
                         <h3><strong>{title}</strong></h3>
                         <p>{subtitle}</p>
                         <Link href={`/article?slug=${slug}&id=${id}`} as={`/a/${slug}/${id}/`}>
                         <a className="btn btn-primary btn-sm">Read more</a>
                         </Link>
                     </div>
-                    <div className="d-flex">
+                    <div className="d-none d-md-flex">
                         {products && products.slice(0, 3).map((product,key) => {
                             return (
                                 <div className="card-mini bg-white p-3 mr-3 text-center" key={key}>

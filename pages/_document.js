@@ -11,7 +11,7 @@ class MyDocument extends Document {
     return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>My page</title>
+          <title>Kidada! Handcrafted products from Amazon selected for you</title>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -25,7 +25,7 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
           <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
-        <body>
+        <body className="bg-light">
           <Header />
           <Main />
           <NextScript />

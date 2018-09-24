@@ -3,39 +3,32 @@ import {connect} from "react-redux"
 import { fetchProducts } from '../redux/actions/productsActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
+import { checkCountryCookie } from '../utils/country'
 
 import "../style/style.scss"
 
 import Product from '../components/product'
 
 
-const styles = theme => ({
-  root: {
-    textAlign: 'center',
-    paddingTop: theme.spacing.unit * 20,
-  },
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    backgroundSize: 'contain',
-    paddingTop: '70%', // 16:9
-  }
-});
-
 class Wishlist extends Component {
+
+  static async getInitialProps(ctx) {
+    const {store, req, query} = ctx
+    await checkCountryCookie(ctx,store.getState().countryReducer,store)
+    const countryCode = store.getState().countryReducer.currentCountry.code
+    return {countryCode}
+}
 
   componentDidMount(){
     this.props.fetchUser()
     if (this.props.userStore.user != null){
-      this.props.fetchWishlist(this.props.userStore.user.uid)
+      this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
 
   componentDidUpdate(prevProps){
     if (prevProps.userStore.user == null && this.props.userStore.user != null){
-      this.props.fetchWishlist(this.props.userStore.user.uid)
+      this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
 

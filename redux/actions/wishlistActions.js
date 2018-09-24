@@ -5,9 +5,8 @@ export const ADD_PRODUCT = 'ADD_PRODUCT'
 export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
 
-export const fetchWishlist = (uid) => async dispatch => {
+export const fetchWishlist = (uid,countryCode) => async dispatch => {
     const firebase = await loadFirebase();
-    console.log(uid)
     firebase.firestore().collection('users')
         .doc(uid)
         .collection('wishlist')
@@ -16,18 +15,20 @@ export const fetchWishlist = (uid) => async dispatch => {
 
           let promises = []
           snapshot.forEach(function(doc) {
-              promises.push(firebase.firestore().collection('products').doc(doc.id).get())                
+              promises.push(firebase.firestore().collection('sites').doc(countryCode).collection('products').doc(doc.id).get())                
           });
             
           Promise.all(promises).then(values => {
 
               const newState = []
               
-              values.forEach(function(doc){                    
-                  newState.push({
-                      id: doc.id,
-                      post: doc.data()
-                  })
+              values.forEach(function(doc){      
+                  if (doc.data()){              
+                    newState.push({
+                        id: doc.id,
+                        post: doc.data()
+                    })
+                  }
               })    
 
               dispatch({
@@ -62,11 +63,11 @@ export const removeFromWishlist = (uid,product) => async dispatch => {
 export const addToWishlist = (uid,product) => async dispatch => {
     const fb = await loadFirebase();
     const productPost = {
-      /*'image': product.post.image,
+      'image': product.post.image,
       'brand': product.post.brand,
       'amazon_link': product.post.amazon_link,
       'name': product.post.name,
-      'price': product.post.price,*/
+      'price': product.post.price,
       // replace with Firestore server timestamp when implemented in Flutter
       'saved_on': Date.now(),
     }

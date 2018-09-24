@@ -11,7 +11,6 @@ export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case FETCH_ARTICLES_SYNC:
             
-            console.log(action.payload)
             return {
                 ...state, articles: action.payload
             }
