@@ -1,0 +1,1 @@
+export const AMAZON_TAG = '?tag=kidada0b-21'

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
 import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlistActions"
+import { AMAZON_TAG } from '../utils/const'
 
 class Product extends Component {
 
@@ -35,7 +36,7 @@ class Product extends Component {
         return (
             <div className="card card--product">
                 <div className="card__button text-nowrap">
-                    <a href={product.post.amazon_link} target="_blank" className="btn btn-primary d-inline-block">
+                    <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="btn btn-primary d-inline-block">
                         Buy on Amazon
                     </a>
                     {this._renderWishlistButton(product)}
