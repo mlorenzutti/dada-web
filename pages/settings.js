@@ -3,6 +3,8 @@ import {connect} from "react-redux"
 import { fetchUser } from '../redux/actions/userActions'
 import { setCountry } from '../redux/actions/countryActions'
 import { checkCountryCookie } from '../utils/country'
+import { logout } from '../utils/login'
+import Header from '../components/header'
 
 import { countryList } from '../utils/country'
 
@@ -51,9 +53,11 @@ class Settings extends Component {
 
 
   render() {
-    const { currentCountry } = this.props;
+    const { currentCountry } = this.props
+    const user = this.props.userStore.user
     return (
       <div>
+        <Header />
         <div className="py-md-5 py-3">
           <div className="container-fluid">
             <div className="row">
@@ -65,9 +69,29 @@ class Settings extends Component {
                 <div className="col-md-8 offset-md-2 col-sm-12">
                     <div className="bg-white p-md-5 p-4 ">
                         <strong>Select your Amazon country</strong>
-                        <div className="row mt-4">
+                        <div className="row my-4">
                         {this._printCountries()}
                         </div>
+                        {user && user.isAnonymous == false &&  
+                        <div>
+                            <strong>Your Data</strong>
+                            <div className="row mt-3">
+                                <div className="col-sm-4">E-mail</div>
+                                <div className="col-sm-8">{user.email}</div>
+                            </div>
+                            {user.displayName && 
+                            <div className="row mt-3">
+                                <div className="col-sm-4">Name</div>
+                                <div className="col-sm-8">{user.displayName}</div>
+                            </div>
+                            }
+                            <div className="row mt-3">
+                                <div className="col-sm-12">
+                                    <button onClick={() => logout()} className="btn btn-secondary btn-sm">Sign Out</button>
+                                </div>
+                            </div>
+                        </div>
+                        }
                     </div>
                 </div>
             </div>

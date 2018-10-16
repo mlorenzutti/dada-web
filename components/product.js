@@ -1,9 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
 import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlistActions"
-import { AMAZON_TAG } from '../utils/const'
+import { AMAZON_TAG, currencySymbol } from '../utils/const'
 
 class Product extends Component {
+    
+    constructor(props){
+        super(props)
+        this.state = {
+            active: this._isInWishlist(this.props.product)
+        }
+    }
+
 
     _isInWishlist = (product) => {
         var result = this.props.wishlistStore.products.find((item) => {
@@ -12,19 +20,28 @@ class Product extends Component {
         return result!=undefined
     }
 
+    _removeFromWishlist = (uid, product, countrycode) => {
+        this.setState({active:false})
+        this.props.removeFromWishlist(uid,product,countrycode)
+    }
+
+    _addFromWishlist = (uid, product, countrycode) => {
+        this.setState({active:true})
+        this.props.addToWishlist(uid,product,countrycode)
+    }
+
     _renderWishlistButton = (product) => {
-        const isInWishlist = this._isInWishlist(product)
-        if (isInWishlist){
+        if (this.state.active){
             return (
                 <button 
-                        onClick={() => this.props.removeFromWishlist(this.props.userStore.user.uid,product)}
+                        onClick={() => this._removeFromWishlist(this.props.userStore.user.uid,product,this.props.countryStore.currentCountry.code)}
                         className="btn btn-primary ml-2 d-inline-block"
                     ><i className="material-icons">favorite</i></button>
             )
         }else{
             return (
                 <button 
-                        onClick={() => this.props.addToWishlist(this.props.userStore.user.uid,product)}
+                        onClick={() => this._addFromWishlist(this.props.userStore.user.uid,product,this.props.countryStore.currentCountry.code)}
                         className="btn btn-primary ml-2 d-inline-block"
                     ><i className="material-icons">favorite_border</i></button>
             )
@@ -35,15 +52,16 @@ class Product extends Component {
         const { product } = this.props;
         return (
             <div className="card card--product">
-                <div className="card__button text-nowrap">
+                
+                <div className="card__price">{product.post.currency && currencySymbol(product.post.currency)} {product.post.price}</div>
+                <div className="card__image"
+                    style={{backgroundImage:`url(${product.post.image})`}}>
+                </div>
+                <div className="card__button ">
                     <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="btn btn-primary d-inline-block">
                         Buy on Amazon
                     </a>
                     {this._renderWishlistButton(product)}
-                </div>
-                <div className="card__price">{product.post.price}</div>
-                <div className="card__image"
-                    style={{backgroundImage:`url(${product.post.image})`}}>
                 </div>
                 <div className="card__brand">by <strong>{product.post.brand}</strong></div>
                 <span className="card__name">{product.post.name}</span>
@@ -53,4 +71,4 @@ class Product extends Component {
     }
 }
 
-export default connect((state) => ({ userStore: state.userReducer, wishlistStore: state.wishlistReducer }),{addToWishlist, removeFromWishlist})(Product)
+export default connect((state) => ({ userStore: state.userReducer, wishlistStore: state.wishlistReducer, countryStore: state.countryReducer }),{addToWishlist, removeFromWishlist})(Product)

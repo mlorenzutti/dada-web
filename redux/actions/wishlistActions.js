@@ -6,22 +6,24 @@ export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 
 
 export const fetchWishlist = (uid,countryCode) => async dispatch => {
+    
     const firebase = await loadFirebase();
     firebase.firestore().collection('users')
         .doc(uid)
         .collection('wishlist')
+        .doc(countryCode)
+        .collection('products')
         .orderBy("saved_on","desc")
-        .onSnapshot(snapshot => {
-
+        .get()
+        .then(snapshot => {
+          
           let promises = []
           snapshot.forEach(function(doc) {
               promises.push(firebase.firestore().collection('sites').doc(countryCode).collection('products').doc(doc.id).get())                
           });
             
           Promise.all(promises).then(values => {
-
               const newState = []
-              
               values.forEach(function(doc){      
                   if (doc.data()){              
                     newState.push({
@@ -32,27 +34,28 @@ export const fetchWishlist = (uid,countryCode) => async dispatch => {
               })    
 
               dispatch({
-                  type: FETCH_WISHLIST,
-                  payload: newState
-              })
+                type: FETCH_WISHLIST,
+                payload: newState
+              }) 
           })
-
-         
         });
   };
 
-export const removeFromWishlist = (uid,product) => async dispatch => {
+export const removeFromWishlist = (uid,product,countryCode) => async dispatch => {
     const fb = await loadFirebase();
     fb.firestore().collection('users')
         .doc(uid)
         .collection('wishlist')
+        .doc(countryCode)
+        .collection('products')
         .doc(product.id)
         .delete()
         .then(function() {
-          console.log("Document successfully deleted!");
+          dispatch(fetchWishlist(uid,countryCode))
           dispatch({
             type: REMOVE_PRODUCT
             })
+             
         })
         .catch(function(error) {
             console.error("Error deleting document: ", error);
@@ -60,7 +63,7 @@ export const removeFromWishlist = (uid,product) => async dispatch => {
     
 }
 
-export const addToWishlist = (uid,product) => async dispatch => {
+export const addToWishlist = (uid,product,countryCode) => async dispatch => {
     const fb = await loadFirebase();
     const productPost = {
       'image': product.post.image,
@@ -74,12 +77,15 @@ export const addToWishlist = (uid,product) => async dispatch => {
     fb.firestore().collection('users')
         .doc(uid)
         .collection('wishlist')
+        .doc(countryCode)
+        .collection('products')
         .doc(product.id).set(productPost)
     .then(function() {
-      console.log("Document successfully written!");
+      dispatch(fetchWishlist(uid,countryCode))
       dispatch({
         type: ADD_PRODUCT
         })
+         
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);

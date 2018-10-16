@@ -7,6 +7,12 @@ nav {
     text-decoration: none !important;
     cursor: pointer;
     padding: 0 10px;
+    -webkit-appearance: none;
+    border: 0;
+    outline: none !important;
+    .header-icons {
+        margin-right: 5px;
+    }
 }
 
 .header-link-mobile {

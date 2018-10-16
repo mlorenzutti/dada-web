@@ -6,6 +6,7 @@ import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
 import { checkCountryCookie } from '../utils/country'
+import Header from '../components/header'
 
 import "../style/style.scss"
 
@@ -48,7 +49,7 @@ class Index extends Component {
     const { classes } = this.props;
     return (
       <div>
-        
+          <Header />
           
             
             

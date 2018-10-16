@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
+import Head from 'next/head'
 import { fetchProducts, fetchProductsSync, FETCH_PRODUCTS_SYNC } from '../redux/actions/productsActions'
 import { fetchArticlesSync, fetchAllArticleProducts, FETCH_ARTICLES_SYNC } from '../redux/actions/articlesActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
 import { checkCountryCookie } from '../utils/country'
+import Header from '../components/header'
 
 import "../style/style.scss"
 
@@ -33,7 +35,7 @@ class Index extends Component {
           store.dispatch({type: FETCH_PRODUCTS_SYNC, payload: newState })
       })
       //get Articles
-      const fetchArticlesAction = fetchArticlesSync(fb);
+      const fetchArticlesAction = fetchArticlesSync(fb,countryCode);
       store.dispatch(fetchArticlesAction);     
       await fetchArticlesAction.payload.then((payload) => {
           let listArticles = []
@@ -71,13 +73,17 @@ class Index extends Component {
     this.props.productsStore.products.map((item,key) => {
       if (key%13===0){
         if (articleIndex<articleCount){
-
           productGrid.push({
             type: 'article',
             data: this.props.articleStore.articles[articleIndex]
           })
           articleIndex++
-        }        
+        }else{
+          productGrid.push({
+            type: 'product',
+            data: item
+          })
+        }    
       }else{
         productGrid.push({
           type: 'product',
@@ -109,17 +115,20 @@ class Index extends Component {
     const { classes } = this.props;
     return (
       <div>
-        
+          <Head>
+              <title>Kidada - Handcrafted products from Amazon selected for you</title>
+          </Head>
+          <Header />
           <div className="bg-primary  mb-3">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col ">
-                <div className="py-md-4 py-4 text-center  text-light ">
-                  <h1 className="h4 p-0 m-0">Handcrafted products from <strong>Amazon</strong> selected for you</h1>
+            <div className="container-fluid">
+              <div className="row">
+                <div className="col ">
+                  <div className="py-md-4 py-4 text-center  text-light ">
+                    <h1 className="h4 p-0 m-0">Handcrafted products from <strong>Amazon</strong> selected for you</h1>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
           <div className="container-fluid">
             <div className="row">

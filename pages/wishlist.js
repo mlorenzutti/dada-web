@@ -4,6 +4,7 @@ import { fetchProducts } from '../redux/actions/productsActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { checkCountryCookie } from '../utils/country'
+import Header from '../components/header'
 
 import "../style/style.scss"
 
@@ -22,12 +23,14 @@ class Wishlist extends Component {
   componentDidMount(){
     this.props.fetchUser()
     if (this.props.userStore.user != null){
+      console.log("pluto2")
       this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
 
   componentDidUpdate(prevProps){
     if (prevProps.userStore.user == null && this.props.userStore.user != null){
+      console.log("pippo2")
       this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
@@ -38,6 +41,7 @@ class Wishlist extends Component {
     const { classes } = this.props;
     return (
       <div>
+        <Header />
         <div className="bg-light py-5">
           <div className="container-fluid">
             <div className="row">

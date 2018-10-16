@@ -16,12 +16,14 @@ class ArticleFeatured extends Component {
         } = this.props.article.post
         return (
             <Link href={`/article?slug=${slug}&id=${id}`} as={`/a/${slug}/${id}/`}>
-                <div className="article-feat" style={{backgroundImage:"url("+image+")"}}>
-                    <div className="article-feat__text">
-                    <h1>{title}</h1>
-                    <h4 className="d-none d-md-block">{subtitle}</h4>
-                    </div>
-                </div>
+                <a alt={title} className="article-feat" style={{backgroundImage:"url("+image+")"}}>
+                    
+                        <div className="article-feat__text">
+                            <h1>{title}</h1>
+                            <h4 className="d-none d-md-block">{subtitle}</h4>
+                        </div>
+                    
+                </a>
             </Link>
         )
     }

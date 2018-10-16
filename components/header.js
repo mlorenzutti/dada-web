@@ -1,7 +1,29 @@
 import React, {Component} from 'react'
+import {connect} from "react-redux"
 import Link from 'next/link'
+import LoginModal from './loginModal'
+import SignupModal from './signupModal'
 
 class Header extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loginModal: false,
+            signupModal: false
+        }
+      }
+    
+    _toggleLoginModal = () => {
+        this.setState({
+            loginModal: !this.state.loginModal
+        });
+    }
+    _toggleSignupModal = () => {
+        this.setState({
+            signupModal: !this.state.signupModal
+        });
+    }
+
     render(){
         return (
             <nav className="py-md-3 sticky-top navbar-light bg-white">
@@ -35,11 +57,18 @@ class Header extends Component {
                                         <i className="material-icons header-icons">favorite</i> Wishlist
                                     </a>
                                 </Link>
+                                {this.props.userStore.user == null || (this.props.userStore.user && this.props.userStore.user.isAnonymous == true) && 
+                                <button onClick={() => this._toggleLoginModal()} className="header-link">
+                                    <i className="material-icons header-icons">face</i> Log in
+                                </button>
+                                }
+                                {this.props.userStore.user && this.props.userStore.user.isAnonymous == false && 
                                 <Link href={'/settings'} as={'/settings'} prefetch>
                                     <a className="header-link">
                                         <i className="material-icons header-icons">settings</i> Settings
                                     </a>
                                 </Link>
+                                }
                             </div>
                         </div>
                     </div>
@@ -64,15 +93,15 @@ class Header extends Component {
                                     <i className="material-icons header-icons-mobile">favorite</i> Wishlist
                                 </a>
                             </Link>
-                        </div>
+                        </div>   
                     </div>
-                    
-              
                 </div>
+                <LoginModal modalOpen={this.state.loginModal} toggle={this._toggleLoginModal} openSignup={this._toggleSignupModal}/>
+                <SignupModal modalOpen={this.state.signupModal} toggle={this._toggleSignupModal} />
             </nav>
         )
     }
 
 }
 
-export default Header
+export default connect((state) => ({ userStore: state.userReducer }),null)(Header)

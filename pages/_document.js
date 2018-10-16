@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Document, { Head, Main, NextScript } from 'next/document'
-import Header from '../components/header'
 
 
 
 class MyDocument extends Document {
   render() {
-
     return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>Kidada! Handcrafted products from Amazon selected for you</title>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -22,11 +19,12 @@ class MyDocument extends Document {
             }
           />
           {/* PWA primary color */}
+          <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
           <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body className="bg-light">
-          <Header />
+          
           <Main />
           <NextScript />
         </body>

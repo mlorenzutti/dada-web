@@ -1,4 +1,5 @@
 import {
+    FETCH_ARTICLES,
     FETCH_ARTICLES_SYNC,
     FETCH_ARTICLES_PRODUCTS,
     FETCH_ARTICLE_PRODUCTS,
@@ -9,8 +10,11 @@ const INITIAL_STATE = { articles: [], currentArticle: null }
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
+        case FETCH_ARTICLES:
+            return {
+                ...state, articles: action.payload
+            }
         case FETCH_ARTICLES_SYNC:
-            
             return {
                 ...state, articles: action.payload
             }

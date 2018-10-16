@@ -6,12 +6,12 @@ export const FETCH_PRODUCTS_SYNC = 'FETCH_PRODUCTS_SYNC'
 export const fetchProductsSync = (firebase,countryCode) => {
   return {
       type: 'FETCH_PRODUCTS_SYNC',
-      payload: firebase.firestore().collection('sites').doc(countryCode).collection('products').orderBy('added_on', 'desc').get()
+      payload: firebase.firestore().collection('sites').doc(countryCode).collection('featured_feed').orderBy('featured_on', 'desc').get()
   }
 }
 
 
-export const fetchProducts = () => async dispatch => {
+export const fetchProducts = (countryCode) => async dispatch => {
     const fb = await loadFirebase();
   
     fb.firestore().collection('products')
@@ -32,4 +32,4 @@ export const fetchProducts = () => async dispatch => {
             payload: newState
           })
         });
-  };
+};
