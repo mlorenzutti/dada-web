@@ -7,6 +7,7 @@ import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
 import { checkCountryCookie } from '../utils/country'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 import Product from '../components/product'
 
@@ -94,6 +95,7 @@ class Article extends Component {
                     </div>
                     
                 </div>
+                <Footer />
             </div>
         )
     }

@@ -8,6 +8,7 @@ import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
 import { checkCountryCookie } from '../utils/country'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 import "../style/style.scss"
 
@@ -135,7 +136,7 @@ class Index extends Component {
               {this._buildGrid()}
             </div>
           </div>
-        
+          <Footer />
       </div>
     )
   }

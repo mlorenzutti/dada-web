@@ -52,11 +52,13 @@ class Product extends Component {
         const { product } = this.props;
         return (
             <div className="card card--product">
-                
+                <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="card__link"></a>
                 <div className="card__price">{product.post.currency && currencySymbol(product.post.currency)} {product.post.price}</div>
+                {product.post.image && 
                 <div className="card__image"
                     style={{backgroundImage:`url(${product.post.image})`}}>
                 </div>
+                }
                 <div className="card__button ">
                     <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="btn btn-primary d-inline-block">
                         Buy on Amazon

@@ -32,10 +32,12 @@ class ArticleSmall extends Component {
                         {products && products.slice(0, 3).map((product,key) => {
                             return (
                                 <div className="card-mini bg-white p-3 mr-3 text-center" key={key}>
+                                    {product.post.image && 
                                     <div className="card-mini__image"
                                         style={{backgroundImage:`url(${product.post.image})`}}
                                     >
                                     </div>
+                                    }
                                     <div className="card-mini__brand d-inline-block text-truncate w-100">
                                        {product.post.brand}
                                     </div>

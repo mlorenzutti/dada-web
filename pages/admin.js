@@ -8,15 +8,18 @@ import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
 import { checkCountryCookie } from '../utils/country'
 import Header from '../components/header'
+import Footer from '../components/footer'
 const ManageArticle = dynamic(() => import('../components/admin/manageArticle'), {  
     ssr: false
 })
-import ArticleList from '../components/admin/articlesList'
+const ManageCategory = dynamic(() => import('../components/admin/manageCategory'), {  
+    ssr: false
+})
+import ArticlesList from '../components/admin/articlesList'
+import ProductsList from '../components/admin/productsList'
+import CategoriesList from '../components/admin/categoriesList'
 
 import "../style/style.scss"
-
-import Product from '../components/product'
-import ArticleSmall from '../components/articleSmall'
 
 class Admin extends Component {
   static async getInitialProps(ctx) {
@@ -29,7 +32,8 @@ class Admin extends Component {
   constructor(props){
       super(props)
       this.state = {
-          addArticle: false
+          addArticle: false,
+          addCategory: false
       }
   }
 
@@ -39,15 +43,17 @@ class Admin extends Component {
     this.props.fetchUser()   
   }
 
-  componentDidUpdate(prevProps){
-    
-  }
-
   _toggleAddArticle = () => {
     this.setState({
         addArticle: !this.state.addArticle
     });
-}
+  }
+
+  _toggleAddCategory = () => {
+    this.setState({
+        addCategory: !this.state.addCategory
+    });
+  }
 
 
   
@@ -74,20 +80,31 @@ class Admin extends Component {
                 <div className="row">
                     <div className="col-sm-8">
                         <h5>Products</h5>
+                        <ProductsList />
                     </div>
                     <div className="col-sm-4">
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <h5 className="mb-0">Articles</h5>
-                            <button onClick={() => this._toggleAddArticle()} className="btn btn-primary btn-sm">Add Article</button>
+                        <div className="mb-5">
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                                <h5 className="mb-0">Articles</h5>
+                                <button onClick={() => this._toggleAddArticle()} className="btn btn-primary btn-sm">Add Article</button>
+                            </div>
+                            <ManageArticle modalOpen={this.state.addArticle} toggle={this._toggleAddArticle} />
+                            <ArticlesList />
                         </div>
-                        <ManageArticle modalOpen={this.state.addArticle} toggle={this._toggleAddArticle} />
-                        <ArticleList />
+                        <div className="mb-5">
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                                <h5 className="mb-0">Categories</h5>
+                                <button onClick={() => this._toggleAddCategory()} className="btn btn-primary btn-sm">Add Category</button>
+                            </div>
+                            <ManageCategory modalOpen={this.state.addCategory} toggle={this._toggleAddCategory} />
+                            <CategoriesList />
+                        </div>
                     </div>
                 </div>
             </div>
           </div>
           }
-        
+          <Footer />
       </div>
     )
   }

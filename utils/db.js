@@ -15,6 +15,9 @@ var config = {
 export function loadFirebase() {
   try {
     firebase.initializeApp(config);
+    const firestore = firebase.firestore();
+    const settings = {/* your settings... */ timestampsInSnapshots: true};
+    firestore.settings(settings);
   } catch (err) {
     // we skip the "already exists" message which is
     // not an actual error when we're hot-reloading

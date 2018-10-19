@@ -1,6 +1,5 @@
 export const AMAZON_TAG = '?tag=kidada0b-21'
 export const currencySymbol = (currencyCountry) => {
-    console.log(currencyCountry)
     switch (currencyCountry){
         case 'EUR':
             return '€ ';

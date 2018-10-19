@@ -22,6 +22,9 @@ const validate = values => {
     if (!values.text) {
         errors.text = 'Required'
     }
+    if (!values.status){
+        errors.status = 'Required'
+    }
 
     return errors
 }
@@ -51,7 +54,7 @@ class addArticle extends React.Component {
             meta_title,
             meta_description,
             status,
-            image,
+            image: image ? image : null,
             slug,
             added_on: firebase.firestore.FieldValue.serverTimestamp(),
             text
@@ -83,6 +86,7 @@ class addArticle extends React.Component {
             })
         }else{
             //ADD ARTICLE
+            console.log(articleObject)
             firebase.firestore().collection('sites').doc(this.props.countryStore.currentCountry.code).collection('articles').add(articleObject)
             .then(docRef => {
                 const articleId = docRef.id
@@ -98,7 +102,6 @@ class addArticle extends React.Component {
     }
 
     render(){
-        console.log(this.props.data)
         const { handleSubmit, pristine, reset, submitting } = this.props
         return (
             <Modal size={'lg'} isOpen={this.props.modalOpen} toggle={this.props.toggle} className={this.props.className}>
@@ -130,6 +133,7 @@ class addArticle extends React.Component {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <Field className="form-control form-control-lg" name="status" component="select">
+                                                <option>Status</option>
                                                 <option value="published">Published</option>
                                                 <option value="draft">Draft</option>
                                             </Field>

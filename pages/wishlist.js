@@ -5,6 +5,7 @@ import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { checkCountryCookie } from '../utils/country'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 import "../style/style.scss"
 
@@ -60,6 +61,7 @@ class Wishlist extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

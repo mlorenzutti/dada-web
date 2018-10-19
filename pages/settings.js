@@ -5,6 +5,7 @@ import { setCountry } from '../redux/actions/countryActions'
 import { checkCountryCookie } from '../utils/country'
 import { logout } from '../utils/login'
 import Header from '../components/header'
+import Footer from '../components/footer'
 
 import { countryList } from '../utils/country'
 
@@ -97,6 +98,7 @@ class Settings extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
