@@ -8,7 +8,7 @@ class Footer extends Component {
     render(){
         const {t} = this.props
         return (
-            <footer className="bg-white py-md-5 py-3 px-3 mt-5">
+            <footer className="bg-white py-md-5 py-3 px-3">
                 <div className="container-fluid">
                     <div className="row align-items-center">
                         <div className="col-sm-7 flex-order-1 order-1 order-sm-0 text-center text-md-left">

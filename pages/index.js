@@ -126,8 +126,8 @@ class Index extends Component {
     return (
       <div>
           <Head>
-              <title>{t('seo:home_metaTitle')}</title>
-              <meta name="description" content={t('seo:home_metaDescription')} />
+              <title>{t('home_metaTitle')}</title>
+              <meta name="description" content={t('home_metaDescription')} />
           </Head>
           <Header />
           <div className="bg-primary  mb-3">

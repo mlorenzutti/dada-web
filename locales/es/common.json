@@ -1,8 +1,8 @@
 {
-  "headline": "Productos artesanales de Amazon seleccionados para tú",
-  "read_more": "Lee mas",
-  "cta": "Comprar en Amazon",
-  "by": "de",
+  "headline": "Handcrafted products from Amazon selected for you",
+  "read_more": "Read more",
+  "cta": "Buy on Amazon",
+  "by": "by",
   "nav": {
     "home": "Home",
     "featured": "Featured",
@@ -58,5 +58,13 @@
     "label_email": "Email",
     "label_name": "Name",
     "signout": "Sign out"
-  }
+  },
+  "home_metaTitle": "Kidada",
+  "home_metaDescription": "",
+  "featured_metaTitle": "Featured - Kidada",
+  "featured_metaDescription": "",
+  "settings_metaTitle": "Settings - Kidada",
+  "settings_metaDescription": "",
+  "wishlist_metaTitle": "Wishlist - Kidada",
+  "wishlist_metaDescription": ""
 }

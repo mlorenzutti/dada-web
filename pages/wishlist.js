@@ -42,8 +42,8 @@ class Wishlist extends Component {
     return (
       <div>
         <Head>
-              <title>{t('seo:wishlist_metaTitle')}</title>
-              <meta name="description" content={t('seo:wishlist_metaDescription')} />
+              <title>{t('wishlist_metaTitle')}</title>
+              <meta name="description" content={t('wishlist_metaDescription')} />
         </Head>
         <Header />
         <div className="bg-light py-5">

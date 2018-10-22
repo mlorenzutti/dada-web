@@ -59,8 +59,8 @@ class Settings extends Component {
     return (
       <div>
         <Head>
-              <title>{t('seo:settings_metaTitle')}</title>
-              <meta name="description" content={t('seo:settings_metaDescription')} />
+              <title>{t('settings_metaTitle')}</title>
+              <meta name="description" content={t('settings_metaDescription')} />
         </Head>
         <Header />
         <div className="py-md-5 py-3">

@@ -53,12 +53,12 @@ class Featured extends Component {
   
 
   render() {
-    const { classes } = this.props;
+    const { classes, t } = this.props;
     return (
       <div>
           <Head>
-              <title>{t('seo:featured_metaTitle')}</title>
-              <meta name="description" content={t('seo:featured_metaDescription')} />
+              <title>{t('featured_metaTitle')}</title>
+              <meta name="description" content={t('featured_metaDescription')} />
           </Head>
           <Header />
               {this.props.articleStore.articles.map((item,key) => {
