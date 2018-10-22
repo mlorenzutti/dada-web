@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import Link from 'next/link'
 import LoginModal from './loginModal'
 import SignupModal from './signupModal'
+import { withNamespaces } from 'react-i18next'
 
 class Header extends Component {
     constructor(props) {
@@ -25,6 +26,7 @@ class Header extends Component {
     }
 
     render(){
+        const { t } = this.props
         return (
             <nav className="py-md-3 sticky-top navbar-light bg-white">
                 <div className="container-fluid">
@@ -33,12 +35,12 @@ class Header extends Component {
                             <div className="d-flex">
                                 <Link href={'/'} as={'/'} prefetch>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">home</i> Home
+                                        <i className="material-icons header-icons">home</i> {t('nav.home')}
                                     </a>
                                 </Link>
                                 <Link href={'/featured'} as={'/featured'} prefetch>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">star</i> Featured
+                                        <i className="material-icons header-icons">star</i> {t('nav.featured')}
                                     </a>
                                 </Link>
                             </div>
@@ -54,18 +56,18 @@ class Header extends Component {
                             <div className="d-flex justify-content-end">
                                 <Link href={'/wishlist'} as={'/wishlist'} prefetch>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">favorite</i> Wishlist
+                                        <i className="material-icons header-icons">favorite</i> {t('nav.wishlist')}
                                     </a>
                                 </Link>
                                 {this.props.userStore.user == null || (this.props.userStore.user && this.props.userStore.user.isAnonymous == true) && 
                                 <button onClick={() => this._toggleLoginModal()} className="header-link">
-                                    <i className="material-icons header-icons">face</i> Log in
+                                    <i className="material-icons header-icons">face</i> {t('nav.login')}
                                 </button>
                                 }
                                 {this.props.userStore.user && this.props.userStore.user.isAnonymous == false && 
                                 <Link href={'/settings'} as={'/settings'} prefetch>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">settings</i> Settings
+                                        <i className="material-icons header-icons">settings</i> {t('nav.settings')}
                                     </a>
                                 </Link>
                                 }
@@ -76,21 +78,21 @@ class Header extends Component {
                         <div className="col-auto">
                             <Link href={'/'} as={'/'} prefetch>
                                 <a className="header-link-mobile">
-                                    <i className="material-icons header-icons-mobile">home</i> Home
+                                    <i className="material-icons header-icons-mobile">home</i> {t('nav.home')}
                                 </a>
                             </Link>
                         </div>
                         <div className="col-auto">
                             <Link href={'/featured'} as={'/featured'} prefetch>
                                 <a className="header-link-mobile">
-                                    <i className="material-icons header-icons-mobile">star</i> Featured
+                                    <i className="material-icons header-icons-mobile">star</i> {t('nav.featured')}
                                 </a>
                             </Link>
                         </div>
                         <div className="col-auto">
                             <Link href={'/wishlist'} as={'/wishlist'} prefetch>
                                 <a className="header-link-mobile">
-                                    <i className="material-icons header-icons-mobile">favorite</i> Wishlist
+                                    <i className="material-icons header-icons-mobile">favorite</i> {t('nav.wishlist')}
                                 </a>
                             </Link>
                         </div>   
@@ -103,5 +105,7 @@ class Header extends Component {
     }
 
 }
+
+Header = withNamespaces('common')(Header)
 
 export default connect((state) => ({ userStore: state.userReducer }),null)(Header)

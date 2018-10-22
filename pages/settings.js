@@ -6,10 +6,10 @@ import { checkCountryCookie } from '../utils/country'
 import { logout } from '../utils/login'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import Head from 'next/head'
 
 import { countryList } from '../utils/country'
 
-import "../style/style.scss"
 
 
 class Settings extends Component {
@@ -58,6 +58,10 @@ class Settings extends Component {
     const user = this.props.userStore.user
     return (
       <div>
+        <Head>
+              <title>{t('seo:settings_metaTitle')}</title>
+              <meta name="description" content={t('seo:settings_metaDescription')} />
+        </Head>
         <Header />
         <div className="py-md-5 py-3">
           <div className="container-fluid">

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from "react-redux"
 import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlistActions"
 import { AMAZON_TAG, currencySymbol } from '../utils/const'
+import { withNamespaces } from 'react-i18next'
 
 class Product extends Component {
     
@@ -49,7 +50,7 @@ class Product extends Component {
     }
 
     render(){
-        const { product } = this.props;
+        const { t, product } = this.props;
         return (
             <div className="card card--product">
                 <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="card__link"></a>
@@ -61,16 +62,18 @@ class Product extends Component {
                 }
                 <div className="card__button ">
                     <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="btn btn-primary d-inline-block">
-                        Buy on Amazon
+                        {t('cta')}
                     </a>
                     {this._renderWishlistButton(product)}
                 </div>
-                <div className="card__brand">by <strong>{product.post.brand}</strong></div>
+                <div className="card__brand">{t('by')} <strong>{product.post.brand}</strong></div>
                 <span className="card__name">{product.post.name}</span>
                 
             </div>
         )
     }
 }
+
+Product = withNamespaces('common')(Product)
 
 export default connect((state) => ({ userStore: state.userReducer, wishlistStore: state.wishlistReducer, countryStore: state.countryReducer }),{addToWishlist, removeFromWishlist})(Product)

@@ -19,7 +19,6 @@ import ArticlesList from '../components/admin/articlesList'
 import ProductsList from '../components/admin/productsList'
 import CategoriesList from '../components/admin/categoriesList'
 
-import "../style/style.scss"
 
 class Admin extends Component {
   static async getInitialProps(ctx) {

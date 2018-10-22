@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import Link from 'next/link'
 import {connect} from "react-redux"
+import { withNamespaces } from 'react-i18next'
 
 class ArticleSmall extends Component {
     render(){
+        const { t } = this.props
         const { 
             id
         } = this.props.article
@@ -25,7 +27,7 @@ class ArticleSmall extends Component {
                         <h3><strong>{title}</strong></h3>
                         <p>{subtitle}</p>
                         <Link href={`/article?slug=${slug}&id=${id}`} as={`/a/${slug}/${id}/`}>
-                        <a className="btn btn-primary btn-sm">Read more</a>
+                        <a className="btn btn-primary btn-sm">{t('read_more')}</a>
                         </Link>
                     </div>
                     <div className="d-none d-md-flex">
@@ -53,5 +55,7 @@ class ArticleSmall extends Component {
     }
 
 }
+
+ArticleSmall = withNamespaces("common")(ArticleSmall)
 
 export default ArticleSmall

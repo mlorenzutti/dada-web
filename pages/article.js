@@ -11,7 +11,6 @@ import Footer from '../components/footer'
 
 import Product from '../components/product'
 
-import "../style/style.scss"
 
 class Article extends Component {
 

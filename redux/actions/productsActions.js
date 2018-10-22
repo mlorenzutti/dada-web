@@ -12,21 +12,18 @@ export const fetchProductsSync = (firebase,countryCode) => {
 
 
 export const fetchProducts = (countryCode) => async dispatch => {
-    const fb = await loadFirebase();
+    const firebase = await loadFirebase();
   
-    fb.firestore().collection('products')
-        .orderBy('added_on', 'desc')
+    firebase.firestore().collection('sites').doc(countryCode).collection('featured_feed')
+        .orderBy('featured_on', 'desc')
         .onSnapshot(snapshot => {
-  
           let newState = []
-  
           snapshot.forEach(function(doc) {
             newState.push({
               id: doc.id,
               post: doc.data()
             });
           });
-  
           dispatch({
             type: FETCH_PRODUCTS,
             payload: newState

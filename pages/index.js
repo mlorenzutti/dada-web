@@ -2,15 +2,16 @@ import React, {Component} from 'react'
 import {connect} from "react-redux"
 import Head from 'next/head'
 import { fetchProducts, fetchProductsSync, FETCH_PRODUCTS_SYNC } from '../redux/actions/productsActions'
-import { fetchArticlesSync, fetchAllArticleProducts, FETCH_ARTICLES_SYNC } from '../redux/actions/articlesActions'
+import { fetchArticles, fetchArticlesSync, fetchAllArticleProducts, FETCH_ARTICLES_SYNC } from '../redux/actions/articlesActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { loadFirebase } from '../utils/db'
 import { checkCountryCookie } from '../utils/country'
+import { withI18next } from '../utils/withI18next'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-import "../style/style.scss"
+
 
 import Product from '../components/product'
 import ArticleSmall from '../components/articleSmall'
@@ -52,6 +53,8 @@ class Index extends Component {
         })
       }else{
         //normal fetch
+        store.dispatch(fetchProducts(countryCode))
+        store.dispatch(fetchArticles(countryCode))
       }
       
       return {countryCode};
@@ -119,11 +122,12 @@ class Index extends Component {
   
 
   render() {
-    const { classes } = this.props;
+    const { classes, t } = this.props;
     return (
       <div>
           <Head>
-              <title>Kidada - Handcrafted products from Amazon selected for you</title>
+              <title>{t('seo:home_metaTitle')}</title>
+              <meta name="description" content={t('seo:home_metaDescription')} />
           </Head>
           <Header />
           <div className="bg-primary  mb-3">
@@ -131,7 +135,7 @@ class Index extends Component {
               <div className="row">
                 <div className="col ">
                   <div className="py-md-4 py-4 text-center  text-light ">
-                    <h1 className="h4 p-0 m-0">Handcrafted products from <strong>Amazon</strong> selected for you</h1>
+                    <h1 className="h4 p-0 m-0">{t('headline')}</h1>
                   </div>
                 </div>
               </div>
@@ -148,6 +152,8 @@ class Index extends Component {
   }
 }
 
+Index = withI18next(['common', 'seo'])(Index)
+
 export default connect((state) => ({ 
   articleStore: state.articlesReducer,
   productsStore: state.productsReducer,
@@ -157,6 +163,7 @@ export default connect((state) => ({
    fetchProductsSync,
    fetchUser,
    fetchWishlist,
+   fetchArticles,
    fetchArticlesSync,
    fetchAllArticleProducts
   })(Index)

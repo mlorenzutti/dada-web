@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux"
+import Head from 'next/head'
 import { fetchProducts } from '../redux/actions/productsActions'
 import { fetchUser } from '../redux/actions/userActions'
 import { fetchWishlist } from '../redux/actions/wishlistActions'
 import { checkCountryCookie } from '../utils/country'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { withI18next } from '../utils/withI18next'
 
-import "../style/style.scss"
 
 import Product from '../components/product'
 
@@ -24,14 +25,12 @@ class Wishlist extends Component {
   componentDidMount(){
     this.props.fetchUser()
     if (this.props.userStore.user != null){
-      console.log("pluto2")
       this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
 
   componentDidUpdate(prevProps){
     if (prevProps.userStore.user == null && this.props.userStore.user != null){
-      console.log("pippo2")
       this.props.fetchWishlist(this.props.userStore.user.uid, this.props.countryCode)
     }
   }
@@ -39,15 +38,19 @@ class Wishlist extends Component {
   
 
   render() {
-    const { classes } = this.props;
+    const { t, classes } = this.props;
     return (
       <div>
+        <Head>
+              <title>{t('seo:wishlist_metaTitle')}</title>
+              <meta name="description" content={t('seo:wishlist_metaDescription')} />
+        </Head>
         <Header />
         <div className="bg-light py-5">
           <div className="container-fluid">
             <div className="row">
               <div className="col py-5 text-center">
-                <h1 className="h2">Your Wishlist</h1>
+                <h1 className="h2">{t('wishlist.title')}</h1>
               </div>
             </div>
             <div className="row">
@@ -66,6 +69,8 @@ class Wishlist extends Component {
     )
   }
 }
+
+Wishlist = withI18next('common','seo')(Wishlist)
 
 export default connect((state) => ({ wishlistStore: state.wishlistReducer, userStore: state.userReducer }),{fetchUser,fetchWishlist})(Wishlist)
 

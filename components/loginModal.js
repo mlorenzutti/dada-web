@@ -4,19 +4,21 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { loginWithGoogle, loginWithFacebook, loginWithEmail } from '../utils/login'
 import { Field, reduxForm } from 'redux-form'
 import { facebookIcon, googleIcon } from '../utils/icons'
+import { withNamespaces } from 'react-i18next'
+import i18n from '../i18n'
 
 
 
-const validate = values => {
+function validate (values){
     const errors = {}
     
     if (!values.email) {
-      errors.email = 'Required'
+      errors.email = i18n.t('form.error_required')
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address'
+      errors.email = i18n.t('form.error_invalid_email')
     }
     if (!values.password) {
-      errors.password = 'Required'
+      errors.password = i18n.t('form.error_required')
     }
 
     return errors
@@ -52,7 +54,7 @@ class LoginModal extends React.Component {
     }
       
     render(){
-        const { handleSubmit, pristine, reset, submitting } = this.props
+        const { handleSubmit, pristine, reset, submitting, t } = this.props
         return (
             <Modal isOpen={this.props.modalOpen} toggle={this.props.toggle} className={this.props.className}>
             <ModalHeader toggle={this.props.toggle}/>
@@ -61,27 +63,27 @@ class LoginModal extends React.Component {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="text-center">
-                                <h2><strong>KIDADA</strong></h2>
-                                <p>Amazon products for a modern way of living</p>
+                                <h2><strong>{t('login.title')}</strong></h2>
+                                <p>{t('login.headline')}</p>
                             </div>
                             <div className="mt-4">
-                                <button className="btn btn-lg btn-primary btn-google btn-block mb-3" onClick={() => loginWithGoogle()}>{googleIcon()} Sign in with Google</button>
-                                <button className="btn btn-lg btn-primary btn-facebook btn-block" onClick={() => loginWithFacebook()}>{facebookIcon()} Sign in with Facebook</button>
+                                <button className="btn btn-lg btn-primary btn-google btn-block mb-3" onClick={() => loginWithGoogle()}>{googleIcon()} {t('login.login_google')}</button>
+                                <button className="btn btn-lg btn-primary btn-facebook btn-block" onClick={() => loginWithFacebook()}>{facebookIcon()} {t('login.login_facebook')}</button>
                             </div>
                             <div className="text-center my-4">
-                                <strong>OR</strong>
+                                <strong>{t('login.or')}</strong>
                             </div>
                             <div>
                                 <form onSubmit={handleSubmit(loginWithEmail)}>
-                                    <Field name="email" type="email" component={renderField} label="Email" />
-                                    <Field name="password" type="password" component={renderField} label="Password" />
+                                    <Field name="email" type="email" component={renderField} label={t('form.email')} />
+                                    <Field name="password" type="password" component={renderField} label={t('form.password')} />
                                     <button type="submit" disabled={submitting} className="btn btn-primary btn-lg btn-block mt-3">
-                                        Log in
+                                        {t('login.login_cta')}
                                     </button>
                                 </form>
                             </div>  
                             <div className="text-center mt-4">
-                                <span className="text-secondary">Not on Kidada yet?</span> <a href="signup" onClick={(e) => this._openSignupModal(e)}>Register Now</a>
+                                <span className="text-secondary">{t('login.not_registered')}</span> <a href="signup" onClick={(e) => this._openSignupModal(e)}>{t('login.signup_now')}</a>
                             </div>
                         </div>
                     </div>
@@ -94,6 +96,8 @@ class LoginModal extends React.Component {
         );
   }
 }
+
+LoginModal = withNamespaces('common')(LoginModal)
 
 LoginModal = reduxForm({
     form: 'loginForm', // a unique identifier for this form

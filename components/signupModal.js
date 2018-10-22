@@ -4,21 +4,23 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { loginWithGoogle, loginWithFacebook, signupWithEmail} from '../utils/login'
 import { Field, reduxForm } from 'redux-form'
 import { facebookIcon, googleIcon } from '../utils/icons'
+import { withNamespaces } from 'react-i18next'
+import i18n from '../i18n'
 
 const validate = values => {
     const errors = {}
     
     if (!values.email) {
-      errors.email = 'Required'
+      errors.email = i18n.t('form.error_required')
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-      errors.email = 'Invalid email address'
+      errors.email = i18n.t('form.error_invalid_email')
     }
     if (!values.password) {
-      errors.password = 'Required'
+      errors.password = i18n.t('form.error_required')
     } else if (!values.repeat_password) {
-      errors.repeat_password = 'Required'
+      errors.repeat_password = i18n.t('form.error_required')
     } else if (values.password != values.repeat_password) {
-      errors.repeat_password = 'The password must be the same'
+      errors.repeat_password = i18n.t('form.error_password_same')
     }
 
     return errors
@@ -48,7 +50,7 @@ class SignupModal extends React.Component {
     }
       
     render(){
-        const { handleSubmit, pristine, reset, submitting } = this.props
+        const { handleSubmit, pristine, reset, submitting, t } = this.props
         return (
             <Modal isOpen={this.props.modalOpen} toggle={this.props.toggle} className={this.props.className}>
             <ModalHeader toggle={this.props.toggle}/>
@@ -57,28 +59,29 @@ class SignupModal extends React.Component {
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="text-center">
-                                <h2><strong>Sign up now!</strong></h2>
-                                <p>Amazon products for a modern way of living</p>
+                                <h2><strong>{t('signup.title')}</strong></h2>
+                                <p>{t('signup.headline')}</p>
                             </div>
                             <div className="mt-4">
-                                <button className="btn btn-lg btn-primary btn-google btn-block mb-3" onClick={() => loginWithGoogle()}>{googleIcon()} Sign up with Google</button>
-                                <button className="btn btn-lg btn-primary btn-facebook btn-block" onClick={() => loginWithFacebook()}>{facebookIcon()} Sign up with Facebook</button>
+                                <button className="btn btn-lg btn-primary btn-google btn-block mb-3" onClick={() => loginWithGoogle()}>{googleIcon()} {t('signup.signup_google')}</button>
+                                <button className="btn btn-lg btn-primary btn-facebook btn-block" onClick={() => loginWithFacebook()}>{facebookIcon()} {t('signup.signup_facebook')}</button>
                             </div>
                             <div className="text-center my-4">
-                                <strong>OR</strong>
+                                <strong>{t('signup.or')}</strong>
                             </div>
                             <div>
                                 <form onSubmit={handleSubmit(signupWithEmail)}>
-                                    <Field name="email" type="email" component={renderField} label="Email" />
-                                    <Field name="password" type="password" component={renderField} label="Password" />
-                                    <Field name="repeat_password" type="password" component={renderField} label="Repeat Password" />
+                                    <Field name="email" type="email" component={renderField} label={t('form.email')} />
+                                    <Field name="password" type="password" component={renderField} label={t('form.password')} />
+                                    <Field name="repeat_password" type="password" component={renderField} label={t('form.repeat_password')} />
                                     <button type="submit" disabled={submitting} className="btn btn-primary btn-lg btn-block mt-3">
-                                        Sign up
+                                        {t('signup.signup_cta')}
                                     </button>
                                 </form>
                             </div>  
                             <div className="mt-3">
-                                <small>By clicking Sign Up, you agree to our <a href="#">Terms</a>. Learn how we use cookies and similar technology in our <a href="#">Cookies Policy</a>.</small>
+                                <small dangerouslySetInnerHTML={{__html: t('signup.agree', { linkterms:"/termscondition" , linkcookie:"/cookiepolicy" , interpolation: {escapeValue: false}})}} />
+
                             </div>
                         </div>
                     </div>
@@ -91,6 +94,8 @@ class SignupModal extends React.Component {
         );
   }
 }
+
+SignupModal = withNamespaces('common')(SignupModal)
 
 SignupModal = reduxForm({
     form: 'signupForm', // a unique identifier for this form

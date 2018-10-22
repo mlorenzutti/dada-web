@@ -1,0 +1,62 @@
+{
+  "headline": "Productos artesanales de Amazon seleccionados para tú",
+  "read_more": "Lee mas",
+  "cta": "Comprar en Amazon",
+  "by": "de",
+  "nav": {
+    "home": "Home",
+    "featured": "Featured",
+    "wishlist": "Wishlist",
+    "settings": "Settings",
+    "login": "Log in"
+  },
+  "form": {
+    "email": "Email",
+    "password": "Password",
+    "repeat_password": "Repeat password",
+    "error_required": "Required",
+    "error_invalid_email": "Invalid email address",
+    "error_password_same": "The password must be the same"
+  },
+  "wishlist": {
+    "title": "Your Wishlist"
+  },
+  "login": {
+    "title": "KIDADA",
+    "headline": "Amazon products for a modern way of living",
+    "login_google": "Log in with Google",
+    "login_facebook": "Log in with Facebook",
+    "or": "Or",
+    "login_cta": "Log in",
+    "not_registered": "Not on Kidada yet? ",
+    "signup_now": "Register Now"
+  },
+  "signup": {
+    "title": "Sign up now!",
+    "headline": "Amazon products for a modern way of living",
+    "signup_google": "Sign up with Google",
+    "signup_facebook": "Sign up with Facebook",
+    "or": "Or",
+    "signup_cta": "Sign up",
+    "agree": "By clicking Sign Up, you agree to our <a href=\"{{linkterms}}\">Terms</a>. Learn how we use cookies and similar technology in our <a href=\"{{linkcookie}}\">Cookies Policy</a>."
+  },
+  "footer": {
+    "text_1": "Kidada is an independent company. Amazon is a trademarked brand.",
+    "text_2": "©2018 Kidada.co. All rights reserved.",
+    "about": "About",
+    "cookie": "Cookie policy",
+    "privacy": "Privacy policy",
+    "terms": "Terms & Condition",
+    "mobile_headline": "Enjoy our selection",
+    "mobile_headline_2": "Everytime and everywhere",
+    "mobile_subline": "Our app is available on iOS and Android"
+  },
+  "settings": {
+    "title": "Your Settings",
+    "select_country": "Select your Amazon country",
+    "your_data": "Your Data",
+    "label_email": "Email",
+    "label_name": "Name",
+    "signout": "Sign out"
+  }
+}

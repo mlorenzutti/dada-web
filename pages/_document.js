@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Document, { Head, Main, NextScript } from 'next/document'
 
-
-
 class MyDocument extends Document {
   render() {
     return (
@@ -21,10 +19,8 @@ class MyDocument extends Document {
           {/* PWA primary color */}
           <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-          <link rel="stylesheet" href="/_next/static/style.css" />
         </Head>
         <body className="bg-light">
-          
           <Main />
           <NextScript />
         </body>
