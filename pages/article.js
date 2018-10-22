@@ -71,7 +71,7 @@ class Article extends Component {
                         <div className="col-sm-12">
                             <div className="mb-5">
                             <h1>{title}</h1>
-                            <h3>{subtitle}</h3>
+                            <h3 className="font-light">{subtitle}</h3>
                             </div>
                             <div className="row">
                                 <div className="col-lg-6">

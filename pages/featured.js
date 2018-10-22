@@ -17,9 +17,10 @@ class Index extends Component {
   static async getInitialProps(ctx) {
       const {store, req, query} = ctx
       await checkCountryCookie(ctx,store.getState().countryReducer,store)
+      const countryCode = store.getState().countryReducer.currentCountry.code
       const fb = await loadFirebase();
       //get Articles
-      const fetchArticlesAction = fetchArticlesSync(fb);
+      const fetchArticlesAction = fetchArticlesSync(fb,countryCode);
       store.dispatch(fetchArticlesAction);     
       await fetchArticlesAction.payload.then((payload) => {
           let listArticles = []

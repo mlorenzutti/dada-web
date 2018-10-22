@@ -19,8 +19,8 @@ class ArticleFeatured extends Component {
                 <a alt={title} className="article-feat" style={{backgroundImage:"url("+image+")"}}>
                     
                         <div className="article-feat__text">
-                            <h1>{title}</h1>
-                            <h4 className="d-none d-md-block">{subtitle}</h4>
+                            <h1 className="">{title}</h1>
+                            <h4 className="d-none d-md-block font-light">{subtitle}</h4>
                         </div>
                     
                 </a>

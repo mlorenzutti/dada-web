@@ -20,39 +20,45 @@ class Index extends Component {
       const {store, req, query} = ctx
       await checkCountryCookie(ctx,store.getState().countryReducer,store)
       const countryCode = store.getState().countryReducer.currentCountry.code
-      const fb = await loadFirebase();
+      const fb = await loadFirebase()
+      
       //get Products
-      const fetchProductsAction = fetchProductsSync(fb,countryCode);
-      store.dispatch(fetchProductsAction);
-      await fetchProductsAction.payload.then((payload) => {
-          let newState = []
-  
-          payload.forEach(function(doc) {
-            newState.push({
-              id: doc.id,
-              post: doc.data()
+      if (!process.browser) {
+        const fetchProductsAction = fetchProductsSync(fb,countryCode);
+        store.dispatch(fetchProductsAction);
+        await fetchProductsAction.payload.then((payload) => {
+            let newState = []
+    
+            payload.forEach(function(doc) {
+              newState.push({
+                id: doc.id,
+                post: doc.data()
+              });
             });
-          });
-          store.dispatch({type: FETCH_PRODUCTS_SYNC, payload: newState })
-      })
-      //get Articles
-      const fetchArticlesAction = fetchArticlesSync(fb,countryCode);
-      store.dispatch(fetchArticlesAction);     
-      await fetchArticlesAction.payload.then((payload) => {
-          let listArticles = []
-          payload.forEach(function(doc) {
-            listArticles.push({
-              id: doc.id,
-              post: doc.data()
-            });            
-          });         
-          store.dispatch({type: FETCH_ARTICLES_SYNC, payload: listArticles }) 
-      })
+            store.dispatch({type: FETCH_PRODUCTS_SYNC, payload: newState })
+        })
+        //get Articles
+        const fetchArticlesAction = fetchArticlesSync(fb,countryCode);
+        store.dispatch(fetchArticlesAction);     
+        await fetchArticlesAction.payload.then((payload) => {
+            let listArticles = []
+            payload.forEach(function(doc) {
+              listArticles.push({
+                id: doc.id,
+                post: doc.data()
+              });            
+            });         
+            store.dispatch({type: FETCH_ARTICLES_SYNC, payload: listArticles }) 
+        })
+      }else{
+        //normal fetch
+      }
       
       return {countryCode};
   }
 
   componentDidMount(){
+    console.log('didmount')
     this.props.fetchUser()
     this.props.fetchAllArticleProducts(this.props.articleStore.articles,this.props.countryCode)
     if (this.props.userStore.user != null){
@@ -102,7 +108,7 @@ class Index extends Component {
         )
       }else{
         return (
-          <div className="col-sm-4" key={key}>
+          <div className="col-md-4 col-sm-6" key={key}>
             <Product product={item.data} />
           </div>
         )
