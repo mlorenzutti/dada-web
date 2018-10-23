@@ -16,10 +16,9 @@ const i18n = require('./i18n')
 // using i18next-express-middleware
 i18n
   .use(Backend)
-  .use(i18nextMiddleware.LanguageDetector)
   .init({
     fallbackLng: 'es',
-    preload: ['en', 'es'], // preload all langages
+    preload: ['es', 'en'], // preload all langages
     ns: ['common', 'seo'], // need to preload all the namespaces
     backend: {
       loadPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.json'),

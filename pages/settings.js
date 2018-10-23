@@ -7,6 +7,7 @@ import { logout } from '../utils/login'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Head from 'next/head'
+import { withI18next } from '../utils/withI18next'
 
 import { countryList } from '../utils/country'
 
@@ -54,7 +55,7 @@ class Settings extends Component {
 
 
   render() {
-    const { currentCountry } = this.props
+    const { currentCountry, t } = this.props
     const user = this.props.userStore.user
     return (
       <div>
@@ -108,5 +109,7 @@ class Settings extends Component {
   }
 }
 
+
+Settings = withI18next(['common', 'seo'])(Settings)
 export default connect((state) => ({ userStore: state.userReducer, countryStore: state.countryReducer }),{fetchUser, setCountry})(Settings)
 

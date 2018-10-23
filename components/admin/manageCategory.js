@@ -60,7 +60,7 @@ class addCategory extends React.Component {
             })
         }else{
             //ADD CATEGORY
-            firebase.firestore().collection('sites').doc(this.props.countryStore.currentCountry.code).collection('categories').add(categoryObject)
+            firebase.firestore().collection('sites').doc(this.props.countryStore.currentCountry.code).collection('categories').doc(categoryObject.slug).set(categoryObject)
             .then(docRef => {
                 this.props.toggle()
             })
