@@ -4,12 +4,12 @@ import '@firebase/storage'
 import '@firebase/auth'
 
 var config = {
-  apiKey: "AIzaSyDKM3Tjm7aGKUx86JrNXTVt7zcZ4-0R1Bk",
-  authDomain: "dada-ism.firebaseapp.com",
-  databaseURL: "https://dada-ism.firebaseio.com",
-  projectId: "dada-ism",
-  storageBucket: "dada-ism.appspot.com",
-  messagingSenderId: "632379132030"
+  apiKey: "AIzaSyDVCZQKtM9dxiUN60Eeq61bea0J5L-3pck",
+  authDomain: "dada-ki.firebaseapp.com",
+  databaseURL: "https://dada-ki.firebaseio.com",
+  projectId: "dada-ki",
+  storageBucket: "dada-ki.appspot.com",
+  messagingSenderId: "233370791898"
 };
 
 export function loadFirebase() {

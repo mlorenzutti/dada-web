@@ -1,4 +1,5 @@
 const express = require('express')
+const compression = require('compression')  
 const path = require('path')
 const next = require('next')
 
@@ -29,7 +30,7 @@ i18n
     app.prepare()
       .then(() => {
         const server = express()
-
+        server.use(compression()) 
         // enable middleware for i18next
         server.use(i18nextMiddleware.handle(i18n))
 

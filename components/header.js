@@ -33,12 +33,12 @@ class Header extends Component {
                     <div className="row align-items-center justify-content-between">
                         <div className="col-md-5 d-none d-md-block">
                             <div className="d-flex">
-                                <Link href={'/'} as={'/'} prefetch>
+                                <Link href={'/'} as={'/'}>
                                     <a className="header-link">
                                         <i className="material-icons header-icons">home</i> {t('nav.home')}
                                     </a>
                                 </Link>
-                                <Link href={'/featured'} as={'/featured'} prefetch>
+                                <Link href={'/featured'} as={'/featured'}>
                                     <a className="header-link">
                                         <i className="material-icons header-icons">star</i> {t('nav.featured')}
                                     </a>
@@ -46,7 +46,7 @@ class Header extends Component {
                             </div>
                         </div>
                         <div className="col-md-2 text-center">
-                            <Link href={'/'} as={'/'} prefetch>
+                            <Link href={'/'} as={'/'}>
                                 <a className="navbar-brand mr-0">
                                     <img src="/static/images/logo.svg" width="70" height="40" className="d-inline-block align-top" alt="" />
                                 </a>
@@ -54,7 +54,7 @@ class Header extends Component {
                         </div>
                         <div className="col-md-5 d-none d-md-block justify-content-end">
                             <div className="d-flex justify-content-end">
-                                <Link href={'/wishlist'} as={'/wishlist'} prefetch>
+                                <Link href={'/wishlist'} as={'/wishlist'}>
                                     <a className="header-link">
                                         <i className="material-icons header-icons">favorite</i> {t('nav.wishlist')}
                                     </a>
@@ -65,7 +65,7 @@ class Header extends Component {
                                 </button>
                                 }
                                 {this.props.userStore.user && this.props.userStore.user.isAnonymous == false && 
-                                <Link href={'/settings'} as={'/settings'} prefetch>
+                                <Link href={'/settings'} as={'/settings'}>
                                     <a className="header-link">
                                         <i className="material-icons header-icons">settings</i> {t('nav.settings')}
                                     </a>
@@ -76,21 +76,21 @@ class Header extends Component {
                     </div>
                     <div className="row no-gutters justify-content-between d-md-none">
                         <div className="col-auto">
-                            <Link href={'/'} as={'/'} prefetch>
+                            <Link href={'/'} as={'/'}>
                                 <a className="header-link-mobile">
                                     <i className="material-icons header-icons-mobile">home</i> {t('nav.home')}
                                 </a>
                             </Link>
                         </div>
                         <div className="col-auto">
-                            <Link href={'/featured'} as={'/featured'} prefetch>
+                            <Link href={'/featured'} as={'/featured'}>
                                 <a className="header-link-mobile">
                                     <i className="material-icons header-icons-mobile">star</i> {t('nav.featured')}
                                 </a>
                             </Link>
                         </div>
                         <div className="col-auto">
-                            <Link href={'/wishlist'} as={'/wishlist'} prefetch>
+                            <Link href={'/wishlist'} as={'/wishlist'}>
                                 <a className="header-link-mobile">
                                     <i className="material-icons header-icons-mobile">favorite</i> {t('nav.wishlist')}
                                 </a>
