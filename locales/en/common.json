@@ -8,7 +8,8 @@
     "featured": "Featured",
     "wishlist": "Wishlist",
     "settings": "Settings",
-    "login": "Log in"
+    "login": "Log in",
+    "join": "Join"
   },
   "form": {
     "email": "Email",

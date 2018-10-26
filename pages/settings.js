@@ -63,7 +63,7 @@ class Settings extends Component {
               <title>{t('settings_metaTitle')}</title>
               <meta name="description" content={t('settings_metaDescription')} />
         </Head>
-        <Header />
+        <Header activePage="settings"/>
         <div className="py-md-5 py-3">
           <div className="container-fluid">
             <div className="row">

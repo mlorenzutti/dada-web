@@ -63,9 +63,10 @@ class Header extends Component {
                                     <img src="/static/images/logo.svg" width="70" height="40" className="d-inline-block align-top" alt="" />
                                 </a>
                             </Link>
+                            
                         </div>
                         <div className="col-md-5 d-none d-md-block justify-content-end">
-                            <div className="d-flex justify-content-end">
+                            <div className="d-flex justify-content-end align-items-center">
                                 <Link href={'/wishlist'} as={'/wishlist'}>
                                     <a className="header-link">
                                     <Icon 
@@ -77,53 +78,98 @@ class Header extends Component {
                                     </a>
                                 </Link>
                                 {this.props.userStore.user == null || (this.props.userStore.user && this.props.userStore.user.isAnonymous == true) && 
-                                <button onClick={() => this._toggleLoginModal()} className="header-link">
-                                    <Icon 
-                                        className="material-icons header-icons"
-                                        color="white"
-                                        path={mdiAccount}
-                                        size={1.2}
-                                        /> {t('nav.login')}
-                                </button>
+                                <div>
+                                    
+                                    <Link href={'/settings'} as={'/settings'}>
+                                        <a className="header-link">
+                                            <Icon 
+                                            className="material-icons header-icons"
+                                            color="white"
+                                            path={mdiSettings}
+                                            size={1.2}
+                                            /> 
+                                        </a>
+                                    </Link>
+                                    <button onClick={() => this._toggleLoginModal()} className="btn btn-alt btn-sm">
+                                         {t('nav.login')}
+                                    </button>
+                                </div>
                                 }
                                 {this.props.userStore.user && this.props.userStore.user.isAnonymous == false && 
-                                <Link href={'/settings'} as={'/settings'}>
-                                    <a className="header-link">
-                                        <Icon 
-                                        className="material-icons header-icons"
-                                        color="white"
-                                        path={mdiSettings}
-                                        size={1.2}
-                                        /> {t('nav.settings')}
-                                    </a>
-                                </Link>
+                                <div>
+                                    <Link href={'/settings'} as={'/settings'}>
+                                        <a className="header-link">
+                                            <Icon 
+                                            className="material-icons header-icons"
+                                            color="white"
+                                            path={mdiSettings}
+                                            size={1.2}
+                                            /> {t('nav.settings')}
+                                        </a>
+                                    </Link>
+                                </div>
                                 }
                             </div>
                         </div>
-                    </div>
-                    <div className="row no-gutters justify-content-between d-md-none">
-                        <div className="col-auto">
-                            <Link href={'/'} as={'/'}>
-                                <a className="header-link-mobile">
-                                    <i className="material-icons header-icons-mobile">home</i> {t('nav.home')}
-                                </a>
-                            </Link>
+                        <div className="d-block d-md-none mobile-login">
+                            {this.props.userStore.user == null || (this.props.userStore.user && this.props.userStore.user.isAnonymous == true) &&
+                                <button onClick={() => this._toggleLoginModal()} className="btn btn-primary btn-xs">
+                                    {t('nav.join')}
+                                </button>
+                            }
                         </div>
-                        <div className="col-auto">
-                            <Link href={'/featured'} as={'/featured'}>
-                                <a className="header-link-mobile">
-                                    <i className="material-icons header-icons-mobile">star</i> {t('nav.featured')}
-                                </a>
-                            </Link>
-                        </div>
-                        <div className="col-auto">
-                            <Link href={'/wishlist'} as={'/wishlist'}>
-                                <a className="header-link-mobile">
-                                    <i className="material-icons header-icons-mobile">favorite</i> {t('nav.wishlist')}
-                                </a>
-                            </Link>
-                        </div>   
                     </div>
+                    
+                </div>
+                <div className="row no-gutters d-md-none">
+                    <div className="col text-center">
+                        <Link href={'/'} as={'/'}>
+                            <a className={`header-link-mobile ${this.props.activePage === "index" ? "header-link-mobile__active" : ""}`}>
+                            <Icon 
+                                className="material-icons header-icons-mobile"
+                                color="#13ddd8"
+                                path={mdiHomeVariant}
+                                size={.8}
+                                /> 
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="col text-center">
+                        <Link href={'/featured'} as={'/featured'}>
+                            <a className={`header-link-mobile ${this.props.activePage === "featured" ? "header-link-mobile__active" : ""}`}>
+                            <Icon 
+                                className="material-icons header-icons-mobile"
+                                color="#13ddd8"
+                                path={mdiStar}
+                                size={.8}
+                                /> 
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="col text-center">
+                        <Link href={'/wishlist'} as={'/wishlist'}>
+                            <a className={`header-link-mobile ${this.props.activePage === "wishlist" ? "header-link-mobile__active" : ""}`}>
+                            <Icon 
+                                className="material-icons header-icons-mobile"
+                                color="#13ddd8"
+                                path={mdiHeart}
+                                size={.8}
+                                /> 
+                            </a>
+                        </Link>
+                    </div>
+                    <div className="col text-center">
+                        <Link href={'/settings'} as={'/settings'}>
+                            <a className={`header-link-mobile ${this.props.activePage === "settings" ? "header-link-mobile__active" : ""}`}>
+                            <Icon 
+                                className="material-icons header-icons-mobile"
+                                color="#13ddd8"
+                                path={mdiSettings}
+                                size={.8}
+                                /> 
+                            </a>
+                        </Link>
+                    </div>   
                 </div>
                 <LoginModal modalOpen={this.state.loginModal} toggle={this._toggleLoginModal} openSignup={this._toggleSignupModal}/>
                 <SignupModal modalOpen={this.state.signupModal} toggle={this._toggleSignupModal} />

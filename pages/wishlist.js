@@ -45,7 +45,7 @@ class Wishlist extends Component {
               <title>{t('wishlist_metaTitle')}</title>
               <meta name="description" content={t('wishlist_metaDescription')} />
         </Head>
-        <Header />
+        <Header activePage="wishlist"/>
         <div className="bg-light py-5">
           <div className="container-fluid">
             <div className="row">

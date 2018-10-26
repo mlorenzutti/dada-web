@@ -55,7 +55,7 @@ class SignupModal extends React.Component {
             <Modal isOpen={this.props.modalOpen} toggle={this.props.toggle} className={this.props.className}>
             <ModalHeader toggle={this.props.toggle}/>
             <ModalBody className="pt-0">
-                <div className="px-4 pb-4">
+                <div className="px-md-4 px-2 pb-3 pb-md-4">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="text-center">
@@ -74,7 +74,7 @@ class SignupModal extends React.Component {
                                     <Field name="email" type="email" component={renderField} label={t('form.email')} />
                                     <Field name="password" type="password" component={renderField} label={t('form.password')} />
                                     <Field name="repeat_password" type="password" component={renderField} label={t('form.repeat_password')} />
-                                    <button type="submit" disabled={submitting} className="btn btn-primary btn-lg btn-block mt-3">
+                                    <button type="submit" disabled={submitting} className="btn btn-alt btn-lg btn-block mt-3">
                                         {t('signup.signup_cta')}
                                     </button>
                                 </form>

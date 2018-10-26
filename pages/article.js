@@ -64,7 +64,7 @@ class Article extends Component {
                     <meta property="og:title" content={meta_title} />
                     <meta property="og:image" content={image} />
                 </Head>
-                <Header />
+                <Header activePage="featured" />
                 <div className="container-fluid mt-5" >
                     <div className="row">
                         <div className="col-sm-12">

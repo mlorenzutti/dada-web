@@ -61,7 +61,6 @@ class Index extends Component {
   }
 
   componentDidMount(){
-    console.log('didmount')
     this.props.fetchUser()
     this.props.fetchAllArticleProducts(this.props.articleStore.articles,this.props.countryCode)
     if (this.props.userStore.user != null){
@@ -129,7 +128,7 @@ class Index extends Component {
               <title>{t('home_metaTitle')}</title>
               <meta name="description" content={t('home_metaDescription')} />
           </Head>
-          <Header />
+          <Header activePage="index" />
           <div className="bg-primary  mb-3">
             <div className="container-fluid">
               <div className="row">

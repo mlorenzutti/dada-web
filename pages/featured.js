@@ -60,7 +60,7 @@ class Featured extends Component {
               <title>{t('featured_metaTitle')}</title>
               <meta name="description" content={t('featured_metaDescription')} />
           </Head>
-          <Header />
+          <Header activePage="featured"/>
               {this.props.articleStore.articles.map((item,key) => {
                   return (
                       <ArticleFeatured key={key} article={item}/>
