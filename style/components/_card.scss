@@ -33,6 +33,7 @@
         @extend .text-center;
         @extend .py-3;
         @extend .py-md-0;
+        position: relative;
         @include media-breakpoint-up(md){
             opacity: 0;
             left: 50%;
@@ -46,6 +47,7 @@
     .card__price {
         @extend .bg-primary;
         position: absolute;
+        z-index: 1;
         top: 20px;
         right: 20px;
         padding: 5px 10px;
@@ -58,14 +60,19 @@
         }
     }
     .card__image {
-        
+        position: relative;
         width: 80%;
         padding-top: 70%;
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
         margin: 0 auto;
         @extend .mb-4;
+        img, div {
+            width: 100%;
+            position: absolute;
+            top:0;
+            left: 0;
+            height: 100%;
+            object-fit: contain;
+        }
     }
     .card__brand {
         white-space: nowrap;

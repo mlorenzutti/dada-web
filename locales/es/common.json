@@ -1,5 +1,5 @@
 {
-  "headline": "ES Handcrafted products from Amazon selected for you",
+  "headline": "Handcrafted products from Amazon selected for you",
   "read_more": "Read more",
   "cta": "Buy on Amazon",
   "by": "by",
@@ -22,13 +22,13 @@
     "title": "Your Wishlist"
   },
   "login": {
-    "title": "KIDADA",
+    "title": "DADAKI",
     "headline": "Amazon products for a modern way of living",
     "login_google": "Log in with Google",
     "login_facebook": "Log in with Facebook",
     "or": "Or",
     "login_cta": "Log in",
-    "not_registered": "Not on Kidada yet? ",
+    "not_registered": "Not on Dadaki yet? ",
     "signup_now": "Register Now"
   },
   "signup": {
@@ -41,15 +41,16 @@
     "agree": "By clicking Sign Up, you agree to our <a href=\"{{linkterms}}\">Terms</a>. Learn how we use cookies and similar technology in our <a href=\"{{linkcookie}}\">Cookies Policy</a>."
   },
   "footer": {
-    "text_1": "Kidada is an independent company. Amazon is a trademarked brand.",
-    "text_2": "©2018 Kidada.co. All rights reserved.",
+    "text_1": "Dadaki is an independent company. Amazon is a trademarked brand.",
+    "text_2": "©2018 Dadaki.co. All rights reserved.",
     "about": "About",
     "cookie": "Cookie policy",
     "privacy": "Privacy policy",
     "terms": "Terms & Condition",
     "mobile_headline": "Enjoy our selection",
     "mobile_headline_2": "Everytime and everywhere",
-    "mobile_subline": "Our app is available on iOS and Android"
+    "mobile_subline": "Our app is available on iOS and Android",
+    "follow_us": "Follow us on"
   },
   "settings": {
     "title": "Your Settings",
@@ -59,12 +60,12 @@
     "label_name": "Name",
     "signout": "Sign out"
   },
-  "home_metaTitle": "Kidada",
+  "home_metaTitle": "Dadaki",
   "home_metaDescription": "",
-  "featured_metaTitle": "Featured - Kidada",
+  "featured_metaTitle": "Featured - Dadaki",
   "featured_metaDescription": "",
-  "settings_metaTitle": "Settings - Kidada",
+  "settings_metaTitle": "Settings - Dadaki",
   "settings_metaDescription": "",
-  "wishlist_metaTitle": "Wishlist - Kidada",
+  "wishlist_metaTitle": "Wishlist - Dadaki",
   "wishlist_metaDescription": ""
 }

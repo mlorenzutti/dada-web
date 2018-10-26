@@ -3,6 +3,9 @@ import {connect} from "react-redux"
 import { addToWishlist, removeFromWishlist } from "../redux/actions/wishlistActions"
 import { AMAZON_TAG, currencySymbol } from '../utils/const'
 import { withNamespaces } from 'react-i18next'
+import LazyLoad from 'react-lazyload';
+import Icon from '@mdi/react'
+import { mdiHeart, mdiHeartOutline } from '@mdi/js'
 
 class Product extends Component {
     
@@ -37,14 +40,24 @@ class Product extends Component {
                 <button 
                         onClick={() => this._removeFromWishlist(this.props.userStore.user.uid,product,this.props.countryStore.currentCountry.code)}
                         className="btn btn-primary ml-2 d-inline-block"
-                    ><i className="material-icons">favorite</i></button>
+                    ><Icon 
+                    className="material-icons"
+                    color="white"
+                    path={mdiHeart}
+                    size={.9}
+                    /></button>
             )
         }else{
             return (
                 <button 
                         onClick={() => this._addFromWishlist(this.props.userStore.user.uid,product,this.props.countryStore.currentCountry.code)}
                         className="btn btn-primary ml-2 d-inline-block"
-                    ><i className="material-icons">favorite_border</i></button>
+                    ><Icon 
+                    className="material-icons"
+                    color="white"
+                    path={mdiHeartOutline}
+                    size={.9}
+                    /></button>
             )
         }
     }
@@ -56,8 +69,10 @@ class Product extends Component {
                 <a href={`${product.post.amazon_link}${AMAZON_TAG}`} target="_blank" className="card__link"></a>
                 <div className="card__price">{product.post.currency && currencySymbol(product.post.currency)} {product.post.price}</div>
                 {product.post.image && 
-                <div className="card__image"
-                    style={{backgroundImage:`url(${product.post.image})`}}>
+                <div className="card__image">
+                    <LazyLoad height={200}>
+                    <img src={product.post.image} className="w-100" />
+                    </LazyLoad>
                 </div>
                 }
                 <div className="card__button ">

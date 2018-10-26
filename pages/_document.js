@@ -17,8 +17,7 @@ class MyDocument extends Document {
             }
           />
           {/* PWA primary color */}
-          <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Nunito:300,700|Source+Sans+Pro:400,700" rel="stylesheet" />
         </Head>
         <body className="bg-light">
           <Main />

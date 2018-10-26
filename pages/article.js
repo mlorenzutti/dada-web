@@ -59,7 +59,7 @@ class Article extends Component {
         return (
             <div>
                 <Head>
-                    <title>{meta_title} - Kidada</title>
+                    <title>{meta_title} - Dadaki</title>
                     <meta name='description' content={meta_description} />
                     <meta property="og:title" content={meta_title} />
                     <meta property="og:image" content={image} />

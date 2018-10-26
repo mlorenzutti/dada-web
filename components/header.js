@@ -4,6 +4,8 @@ import Link from 'next/link'
 import LoginModal from './loginModal'
 import SignupModal from './signupModal'
 import { withNamespaces } from 'react-i18next'
+import Icon from '@mdi/react'
+import { mdiHomeVariant, mdiStar, mdiHeart, mdiSettings, mdiAccount } from '@mdi/js'
 
 class Header extends Component {
     constructor(props) {
@@ -35,12 +37,22 @@ class Header extends Component {
                             <div className="d-flex">
                                 <Link href={'/'} as={'/'}>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">home</i> {t('nav.home')}
+                                        <Icon 
+                                        className="material-icons header-icons"
+                                        color="white"
+                                        path={mdiHomeVariant}
+                                        size={1.2}
+                                        /> {t('nav.home')}
                                     </a>
                                 </Link>
                                 <Link href={'/featured'} as={'/featured'}>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">star</i> {t('nav.featured')}
+                                    <Icon 
+                                        className="material-icons header-icons"
+                                        color="white"
+                                        path={mdiStar}
+                                        size={1.2}
+                                        /> {t('nav.featured')}
                                     </a>
                                 </Link>
                             </div>
@@ -56,18 +68,33 @@ class Header extends Component {
                             <div className="d-flex justify-content-end">
                                 <Link href={'/wishlist'} as={'/wishlist'}>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">favorite</i> {t('nav.wishlist')}
+                                    <Icon 
+                                        className="material-icons header-icons"
+                                        color="white"
+                                        path={mdiHeart}
+                                        size={1.2}
+                                        /> {t('nav.wishlist')}
                                     </a>
                                 </Link>
                                 {this.props.userStore.user == null || (this.props.userStore.user && this.props.userStore.user.isAnonymous == true) && 
                                 <button onClick={() => this._toggleLoginModal()} className="header-link">
-                                    <i className="material-icons header-icons">face</i> {t('nav.login')}
+                                    <Icon 
+                                        className="material-icons header-icons"
+                                        color="white"
+                                        path={mdiAccount}
+                                        size={1.2}
+                                        /> {t('nav.login')}
                                 </button>
                                 }
                                 {this.props.userStore.user && this.props.userStore.user.isAnonymous == false && 
                                 <Link href={'/settings'} as={'/settings'}>
                                     <a className="header-link">
-                                        <i className="material-icons header-icons">settings</i> {t('nav.settings')}
+                                        <Icon 
+                                        className="material-icons header-icons"
+                                        color="white"
+                                        path={mdiSettings}
+                                        size={1.2}
+                                        /> {t('nav.settings')}
                                     </a>
                                 </Link>
                                 }
